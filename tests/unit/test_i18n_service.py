@@ -1,10 +1,12 @@
+from string import Formatter
+
 import pytest
 from litestar.stores.memory import MemoryStore
 from litestar.testing import TestClient
 from pydantic import ValidationError
 
 from core.i18n.enums import CatalogEnum, LanguageEnum
-from core.i18n.service import CATALOGS, I18nService, catalog_revision, validate_catalog
+from core.i18n.service import I18nService
 from infra.config.constants import constants
 from infra.config.settings import I18nSettings, settings
 from main import create_app
@@ -12,35 +14,21 @@ from main import create_app
 
 @pytest.mark.parametrize("catalog", list(CatalogEnum))
 def test_catalog_languages_keys_and_placeholders(catalog: CatalogEnum) -> None:
-    validate_catalog(catalog, CATALOGS[catalog])
-
-
-@pytest.mark.parametrize("defect", ["missing_key", "missing_enum", "placeholder", "empty"])
-def test_catalog_validation_rejects_broken_translations(defect: str) -> None:
-    messages = {
-        language: dict(bundle) for language, bundle in CATALOGS[CatalogEnum.WORKSPACE].items()
-    }
-    if defect == "missing_key":
-        del messages[LanguageEnum.EN]["app.siteName"]
-    elif defect == "missing_enum":
-        for bundle in messages.values():
-            del bundle["enum.publishStatus.Draft"]
-    elif defect == "placeholder":
-        messages[LanguageEnum.EN]["app.siteName"] = "{unexpected}"
-    else:
-        messages[LanguageEnum.EN]["app.siteName"] = " "
-    with pytest.raises(ValueError, match="Catalog"):
-        validate_catalog(CatalogEnum.WORKSPACE, messages)
-
-
-def test_revision_changes_with_translations() -> None:
-    changed = {
-        catalog: {language: dict(bundle) for language, bundle in messages.items()}
-        for catalog, messages in CATALOGS.items()
-    }
-    changed[CatalogEnum.WORKSPACE][LanguageEnum.EN]["app.siteName"] = "Changed"
-    assert catalog_revision(changed) != catalog_revision(CATALOGS)
-    assert catalog_revision(dict(reversed(list(CATALOGS.items())))) == catalog_revision(CATALOGS)
+    service = I18nService(LanguageEnum.RU)
+    russian = service.get_messages(catalog, LanguageEnum.RU)
+    english = service.get_messages(catalog, LanguageEnum.EN)
+    assert russian.keys() == english.keys()
+    formatter = Formatter()
+    for key in russian:
+        assert russian[key].strip(), key
+        assert english[key].strip(), key
+        russian_fields = {
+            name for _, name, _, _ in formatter.parse(russian[key]) if name is not None
+        }
+        english_fields = {
+            name for _, name, _, _ in formatter.parse(english[key]) if name is not None
+        }
+        assert russian_fields == english_fields, key
 
 
 def test_returned_messages_do_not_mutate_catalog() -> None:

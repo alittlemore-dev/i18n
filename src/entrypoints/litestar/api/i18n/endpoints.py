@@ -1,3 +1,5 @@
+import hashlib
+import json
 from typing import Annotated
 
 from dishka import FromDishka
@@ -5,8 +7,9 @@ from dishka.integrations.litestar import DishkaRouter
 from litestar import Controller, Request, get
 from litestar.params import Parameter
 
+from core.i18n.catalogs import CATALOGS
 from core.i18n.enums import CatalogEnum, LanguageEnum
-from core.i18n.service import CATALOGS, I18nService, catalog_revision
+from core.i18n.service import I18nService
 from entrypoints.litestar.api.i18n.schemas import (
     I18nBundleResponseSchema,
     LanguageResponseSchema,
@@ -21,7 +24,8 @@ I18nLanguagePath = Annotated[
 
 
 def create_i18n_router() -> DishkaRouter:
-    revision = catalog_revision(CATALOGS)
+    content = json.dumps(CATALOGS, ensure_ascii=False, sort_keys=True).encode()
+    revision = hashlib.sha256(content).hexdigest()
     default_language = settings.i18n.default_language
 
     def cache_key(request: Request) -> str:

@@ -5,8 +5,8 @@ from litestar import get
 from litestar.testing import AsyncTestClient
 from valkey.asyncio import Valkey
 
+from core.i18n.catalogs import CATALOGS
 from core.i18n.enums import CatalogEnum, LanguageEnum
-from core.i18n.service import CATALOGS
 from infra.config.constants import constants
 from infra.config.settings import settings
 from main import create_app

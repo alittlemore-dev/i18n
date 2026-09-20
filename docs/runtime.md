@@ -89,8 +89,8 @@ or deployment occurs when running the local acceptance checks.
 
 ## Catalog ownership
 
-Catalogs and validation live in core.i18n; HTTP schemas and handlers adapt that core through
-Dishka. Both catalogs were copied from their original applications without text changes.
+Catalogs and translation lookup live in core.i18n; HTTP schemas and handlers adapt that core
+through Dishka. Static catalog consistency is checked by tests, not on application requests. Both catalogs were copied from their original applications without text changes.
 The original backends are retained for rollback. Catalog tests cover matching ru/en keys,
 placeholders and required enum labels without importing application business modules.
 Shared local and production integration is maintained by the sibling infra repository.

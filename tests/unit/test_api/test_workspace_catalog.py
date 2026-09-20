@@ -1,6 +1,5 @@
 from core.i18n.catalogs.workspace import get_i18n_messages
-from core.i18n.enums import CatalogEnum, LanguageEnum
-from core.i18n.service import required_enum_keys
+from core.i18n.enums import LanguageEnum
 
 
 class TestI18nCatalog:
@@ -37,8 +36,12 @@ class TestI18nCatalog:
         assert english_keys == russian_keys
 
     def test_publish_status_values_have_labels_in_every_language(self) -> None:
+        required_keys = {
+            "enum.publishStatus.Draft",
+            "enum.publishStatus.Published",
+        }
         for language in LanguageEnum:
-            assert required_enum_keys(CatalogEnum.WORKSPACE) <= get_i18n_messages(language).keys()
+            assert required_keys <= get_i18n_messages(language).keys()
 
     def test_retained_workspace_copy_is_localized_in_both_languages(self) -> None:
         required_keys = {

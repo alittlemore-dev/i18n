@@ -1,6 +1,5 @@
 from core.i18n.catalogs.competency import get_i18n_messages
-from core.i18n.enums import CatalogEnum, LanguageEnum
-from core.i18n.service import required_enum_keys
+from core.i18n.enums import LanguageEnum
 
 
 class TestI18nCatalog:
@@ -11,8 +10,37 @@ class TestI18nCatalog:
         assert english_keys == russian_keys
 
     def test_all_translatable_enum_values_have_labels(self) -> None:
+        required_keys = {
+            "enum.publishStatus.Draft",
+            "enum.publishStatus.Published",
+            "enum.grade.Junior",
+            "enum.grade.JuniorPlus",
+            "enum.grade.Middle",
+            "enum.grade.MiddlePlus",
+            "enum.grade.Senior",
+            "enum.interviewFrequency.constantly",
+            "enum.interviewFrequency.often",
+            "enum.interviewFrequency.rarely",
+            "enum.interviewFrequency.neverSeen",
+            "enum.role.anon",
+            "enum.role.user",
+            "enum.role.moderator",
+            "enum.role.admin",
+            "enum.role.owner",
+            "enum.articleReaction.heart",
+            "enum.articleReaction.fire",
+            "enum.articleReaction.thinking",
+            "enum.articleReaction.neutral",
+            "enum.articleReaction.poop",
+            "enum.articleViewSource.Direct",
+            "enum.articleViewSource.Internal",
+            "enum.articleViewSource.Search",
+            "enum.articleViewSource.Social",
+            "enum.articleViewSource.External",
+            "enum.articleViewSource.Unknown",
+        }
         for language in LanguageEnum:
-            assert required_enum_keys(CatalogEnum.COMPETENCY) <= get_i18n_messages(language).keys()
+            assert required_keys <= get_i18n_messages(language).keys()
 
     def test_date_picker_catalog_has_accessible_dialog_labels(self) -> None:
         russian_messages = get_i18n_messages(language=LanguageEnum.RU)

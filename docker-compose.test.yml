@@ -1,0 +1,13 @@
+services:
+  valkey-test:
+    image: valkey/valkey:9.0.1
+    command: ["valkey-server", "--save", "", "--appendonly", "no"]
+    ports:
+      - "127.0.0.1:${VALKEY_PORT:?VALKEY_PORT must be set}:6379"
+    tmpfs:
+      - /data
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 2s
+      timeout: 5s
+      retries: 30

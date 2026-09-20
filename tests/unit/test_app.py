@@ -22,9 +22,6 @@ def test_health_and_routes(monkeypatch: pytest.MonkeyPatch, cache_enabled: bool)
         for path in (
             "/api/healthcheck",
             "/api/docs",
-            "/api/i18n/languages",
-            "/api/i18n/bundles/ru",
-            "/api/i18n/bundles/en",
             "/api/auth/login",
         ):
             assert client.get(path).status_code == 404

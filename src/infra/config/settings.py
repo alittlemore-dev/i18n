@@ -1,6 +1,7 @@
 from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from core.i18n.enums import LanguageEnum
 from infra.config.constants import constants
 
 
@@ -13,6 +14,12 @@ class AppSettings(ProjectBaseSettings):
 
     debug: bool
     use_cache: bool
+
+
+class I18nSettings(ProjectBaseSettings):
+    model_config = SettingsConfigDict(env_prefix="I18N_")
+
+    default_language: LanguageEnum
 
 
 class ValkeySettings(ProjectBaseSettings):
@@ -36,6 +43,7 @@ class SentrySettings(ProjectBaseSettings):
 class Settings:
     def __init__(self) -> None:
         self.app = AppSettings()
+        self.i18n = I18nSettings()
         self.valkey = ValkeySettings()
         self.sentry = SentrySettings()
 

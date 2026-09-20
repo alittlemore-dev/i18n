@@ -5,6 +5,8 @@ from litestar import get
 from litestar.testing import AsyncTestClient
 from valkey.asyncio import Valkey
 
+from core.i18n.enums import CatalogEnum, LanguageEnum
+from core.i18n.service import CATALOGS
 from infra.config.constants import constants
 from infra.config.settings import settings
 from main import create_app
@@ -54,3 +56,46 @@ async def test_cache_disabled_executes_each_request(monkeypatch: pytest.MonkeyPa
     async with AsyncTestClient(app) as client:
         assert (await client.get("/uncached")).json() == 1
         assert (await client.get("/uncached")).json() == 2
+
+
+async def test_catalog_responses_use_versioned_isolated_valkey_cache(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    namespace = f"I18N_TEST_{uuid.uuid4().hex}"
+    monkeypatch.setattr(settings.app, "use_cache", True)
+    monkeypatch.setattr(constants.valkey, "namespace", namespace)
+    paths = [
+        f"/api/i18n{prefix}/bundles/{language}"
+        for prefix in ("", "/personal-workspace")
+        for language in ("ru", "en")
+    ]
+    async with Valkey.from_url(settings.valkey.url) as valkey:
+        try:
+            async with AsyncTestClient(create_app()) as client:
+                for path in paths:
+                    first = await client.get(path)
+                    second = await client.get(path)
+                    assert first.status_code == 200
+                    assert second.json() == first.json()
+                assert (await client.get("/api/i18n/languages")).json()["defaultLanguage"] == "ru"
+            original_keys = {key async for key in valkey.scan_iter(match=f"{namespace}:*")}
+            assert len(original_keys) == 5
+            for key in original_keys:
+                assert 86_390 <= await valkey.ttl(key) <= 86_400
+
+            changed = {
+                catalog: {language: dict(bundle) for language, bundle in messages.items()}
+                for catalog, messages in CATALOGS.items()
+            }
+            changed[CatalogEnum.WORKSPACE][LanguageEnum.EN]["app.siteName"] = "New workspace title"
+            monkeypatch.setattr("core.i18n.service.CATALOGS", changed)
+            monkeypatch.setattr("entrypoints.litestar.api.i18n.endpoints.CATALOGS", changed)
+            async with AsyncTestClient(create_app()) as client:
+                response = await client.get("/api/i18n/personal-workspace/bundles/en")
+                assert response.json()["messages"]["app.siteName"] == "New workspace title"
+            new_keys = {key async for key in valkey.scan_iter(match=f"{namespace}:*")}
+            assert len(new_keys - original_keys) == 1
+        finally:
+            keys = [key async for key in valkey.scan_iter(match=f"{namespace}:*")]
+            if keys:
+                await valkey.delete(*keys)

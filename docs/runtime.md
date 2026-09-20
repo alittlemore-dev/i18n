@@ -7,6 +7,7 @@ Requires Python 3.14, uv and Docker Compose v2. Configuration is loaded from the
 | --- | --- | --- |
 | APP_DEBUG | true | Console debug logs; false selects ECS JSON |
 | APP_USE_CACHE | true | Register the Valkey response-cache store |
+| I18N_DEFAULT_LANGUAGE | ru | Default interface language, ru or en |
 | VALKEY_HOST | localhost | Valkey host |
 | VALKEY_PORT | 56379 | Dedicated local/test Valkey port; containers use 6379 |
 | SENTRY_USE | false | Explicitly enable Sentry |
@@ -24,10 +25,21 @@ Both use main:create_app. The container only supports the run action.
 - GET /api/i18n/healthcheck: empty 200, independent of Valkey.
 - GET /api/i18n/healthcheck/ready: empty 200 after PING; empty 503 on connection failure.
 - GET /api/i18n/docs: OpenAPI UI. Operational health endpoints are omitted from the schema.
-- Translation and legacy-root routes return 404.
+- GET /api/i18n/languages: defaultLanguage and the ru/en language list.
+- GET /api/i18n/bundles/{language}: competency-trainer catalog.
+- GET /api/i18n/personal-workspace/bundles/{language}: personal-workspace catalog.
+
+Translation routes are public. Bundles contain language and messages; unsupported languages
+return 400. Catalogs stay separate, including conflicting keys. The frontend retains shared
+catalog precedence and maps workspace dashboard.* keys to workspaceDashboard.*.
+Legacy root operational routes return 404. The shared edge proxies the old
+/api/personal-workspace/i18n/languages and /bundles/{language} paths to this service.
 
 Health endpoints are never cached. APP_USE_CACHE registers a Litestar response store in Valkey
-DB 0, namespace I18N_LITESTAR; no production handler uses it yet. Readiness still requires
+DB 0, namespace I18N_LITESTAR. Translation responses are cached for 86400 seconds, with keys
+separated by path (catalog/language), configured default language and a SHA-256 fingerprint
+of both catalogs. Changing translations rotates the response-cache keys without flushing
+another release's cache. With APP_USE_CACHE=false, handlers do not cache responses. Readiness still requires
 Valkey with caching disabled. Connections have bounded timeouts and close during shutdown.
 Sentry and request logs exclude request bodies, raw query values and credentials.
 
@@ -73,3 +85,12 @@ for badge updates; protected-branch policies must permit the latter.
 Dependabot checks uv, GitHub Actions and Docker weekly. Dependency badges describe locked
 Python packages; Docker tooling badges describe the configured images. No remote publication
 or deployment occurs when running the local acceptance checks.
+
+
+## Catalog ownership
+
+Catalogs and validation live in core.i18n; HTTP schemas and handlers adapt that core through
+Dishka. Both catalogs were copied from their original applications without text changes.
+The original backends are retained for rollback. Catalog tests cover matching ru/en keys,
+placeholders and required enum labels without importing application business modules.
+Shared local and production integration is maintained by the sibling infra repository.

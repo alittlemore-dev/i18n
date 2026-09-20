@@ -1,6 +1,6 @@
 # i18n
 
-Каркас самостоятельного сервиса локализации платформы alittlemore.dev. Сейчас реализованы HTTP runtime и подключение Valkey; API переводов появится отдельным этапом.
+Сервис локализации alittlemore.dev с отдельными русским и английским каталогами переводов для Competency Trainer и Personal Workspace.
 
 [English version](./README.md)
 
@@ -27,4 +27,4 @@ make build
 
 Контракт контейнера: `start_application.sh run`, порт `8080`, readiness `/api/i18n/healthcheck/ready`. CI публикует проверенный образ `ghcr.io/alittlemore-dev/i18n` с тегами SHA и `latest`.
 
-[Запуск, настройки и проверки](../docs/runtime.md). Общий deployment принадлежит репозиторию infra; подключение i18n к нему ещё не выполнено.
+[Запуск, настройки и проверки](../docs/runtime.md). Общий deployment принадлежит репозиторию infra.

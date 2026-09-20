@@ -1,6 +1,6 @@
 # i18n
 
-Standalone localization service scaffold for the alittlemore.dev platform. This milestone provides the HTTP runtime and Valkey integration; the translation API will follow separately.
+Standalone localization service for alittlemore.dev, serving separate Russian and English translation catalogs for Competency Trainer and Personal Workspace.
 
 [Русская версия](./README_RU.md)
 
@@ -27,4 +27,4 @@ make build
 
 Container contract: `start_application.sh run`, port `8080`, readiness `/api/i18n/healthcheck/ready`. CI publishes the checked image to `ghcr.io/alittlemore-dev/i18n` with SHA and `latest` tags.
 
-[Runtime configuration and checks](../docs/runtime.md). Shared deployment is owned by the infra repository; i18n is not connected to it yet.
+[Runtime configuration and checks](../docs/runtime.md). Shared deployment is owned by the infra repository.

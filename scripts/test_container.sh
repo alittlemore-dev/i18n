@@ -14,10 +14,11 @@ network="$(docker network create "i18n-smoke-$$")"
 cache_container="$(docker run -d --network "$network" --network-alias valkey \
     --tmpfs /data valkey/valkey:9.0.1 valkey-server --save "" --appendonly no)"
 app_container="$(docker run -d --network "$network" \
-    -e APP_DEBUG=false -e APP_USE_CACHE=true \
+    -e I18N_DEFAULT_LANGUAGE=ru -e APP_DEBUG=false -e APP_USE_CACHE=true \
     -e VALKEY_HOST=valkey -e VALKEY_PORT=6379 -e SENTRY_USE=false -e SENTRY_DSN= \
     "$image_ref")"
 docker exec "$app_container" python -c '
+import json
 import os
 import time
 import urllib.request
@@ -25,7 +26,7 @@ from urllib.error import URLError
 assert os.getuid() == 10001
 for attempt in range(60):
     try:
-        for path in ("healthcheck", "healthcheck/ready", "docs"):
+        for path in ("healthcheck", "healthcheck/ready", "docs", "languages", "bundles/ru", "bundles/en", "personal-workspace/bundles/ru", "personal-workspace/bundles/en"):
             with urllib.request.urlopen("http://127.0.0.1:8080/api/i18n/" + path, timeout=3) as response:
                 assert response.status == 200
         break
@@ -33,7 +34,10 @@ for attempt in range(60):
         time.sleep(1)
 else:
     raise SystemExit("Container did not become ready")
-print("Container health, readiness, docs and non-root runtime passed")
+for prefix, title in (("", "Competency Trainer"), ("personal-workspace/", "Personal workspace")):
+    with urllib.request.urlopen("http://127.0.0.1:8080/api/i18n/" + prefix + "bundles/en") as response:
+        assert json.load(response)["messages"]["app.siteName"] == title
+print("Container health, readiness, docs, catalogs and non-root runtime passed")
 '
 docker stop --time 5 "$cache_container" >/dev/null
 docker exec "$app_container" python -c '

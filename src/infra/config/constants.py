@@ -13,6 +13,10 @@ class ValkeyConstants:
     timeout_seconds: float = 2.0
 
 
+class ResponseCacheConstants:
+    default_ttl_seconds: int = 86_400
+
+
 class MonitoringConstants:
     interval_seconds: float = 1.0
     lag_threshold_seconds: float = 1.0
@@ -20,6 +24,7 @@ class MonitoringConstants:
 
 class Constants:
     path: PathConstants = PathConstants()
+    response_cache: ResponseCacheConstants = ResponseCacheConstants()
     valkey: ValkeyConstants = ValkeyConstants()
     monitoring: MonitoringConstants = MonitoringConstants()
 

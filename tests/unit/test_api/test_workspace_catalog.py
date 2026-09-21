@@ -1,5 +1,12 @@
-from core.i18n.catalogs.workspace import get_i18n_messages
-from core.i18n.enums import LanguageEnum
+from core.i18n.catalogs import BUNDLES
+from core.i18n.enums import BundleEnum, LanguageEnum
+
+
+def get_i18n_messages(language: LanguageEnum) -> dict[str, str]:
+    return {
+        **BUNDLES[BundleEnum.SHARED][language],
+        **BUNDLES[BundleEnum.PERSONAL_WORKSPACE][language],
+    }
 
 
 class TestI18nCatalog:

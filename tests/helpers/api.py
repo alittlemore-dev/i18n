@@ -28,8 +28,8 @@ class I18nTestApi:
     def get_i18n_languages(self) -> Response:
         return self.client.get("/api/i18n/languages")
 
-    def get_i18n_bundle(self, *, language: str) -> Response:
-        return self.client.get(f"{self.prefix}/bundles/{language}")
+    def get_i18n_bundle(self, *, bundle: str, language: str) -> Response:
+        return self.client.get(f"{self.prefix}/bundles/{bundle}/{language}")
 
 
 class ApiTestCase:

@@ -1,7 +1,7 @@
 from pydantic import BaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
 
-from core.i18n.enums import LanguageEnum
+from core.i18n.enums import BundleEnum, LanguageEnum
 
 
 class CamelCaseSchema(BaseModel):
@@ -19,5 +19,6 @@ class LanguagesResponseSchema(CamelCaseSchema):
 
 
 class I18nBundleResponseSchema(CamelCaseSchema):
+    bundle: BundleEnum
     language: LanguageEnum
     messages: dict[str, str]

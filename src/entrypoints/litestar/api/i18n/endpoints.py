@@ -2,10 +2,9 @@ from dishka import FromDishka
 from dishka.integrations.litestar import DishkaRouter
 from litestar import Controller, get
 
-from core.i18n.enums import CatalogEnum
 from core.i18n.service import I18nService
 from entrypoints.litestar.api.i18n.cache import create_i18n_cache_key
-from entrypoints.litestar.api.i18n.parameters import I18nLanguagePath
+from entrypoints.litestar.api.i18n.parameters import I18nBundlePath, I18nLanguagePath
 from entrypoints.litestar.api.i18n.schemas import (
     I18nBundleResponseSchema,
     LanguageResponseSchema,
@@ -33,27 +32,18 @@ class I18nController(Controller):
         )
 
     @get(
-        "/bundles/{language:str}",
+        "/bundles/{bundle:str}/{language:str}",
         cache=constants.response_cache.default_ttl_seconds if settings.app.use_cache else False,
         cache_key_builder=create_i18n_cache_key(settings.i18n.default_language),
     )
     async def bundle(
-        self, language: I18nLanguagePath, service: FromDishka[I18nService]
+        self,
+        bundle: I18nBundlePath,
+        language: I18nLanguagePath,
+        service: FromDishka[I18nService],
     ) -> I18nBundleResponseSchema:
         return I18nBundleResponseSchema(
-            language=language, messages=service.get_messages(CatalogEnum.COMPETENCY, language)
-        )
-
-    @get(
-        "/personal-workspace/bundles/{language:str}",
-        cache=constants.response_cache.default_ttl_seconds if settings.app.use_cache else False,
-        cache_key_builder=create_i18n_cache_key(settings.i18n.default_language),
-    )
-    async def workspace_bundle(
-        self, language: I18nLanguagePath, service: FromDishka[I18nService]
-    ) -> I18nBundleResponseSchema:
-        return I18nBundleResponseSchema(
-            language=language, messages=service.get_messages(CatalogEnum.WORKSPACE, language)
+            bundle=bundle, language=language, messages=service.get_messages(bundle, language)
         )
 
 

@@ -1,5 +1,13 @@
-from core.i18n.catalogs.competency import get_i18n_messages
-from core.i18n.enums import LanguageEnum
+from core.i18n.catalogs import BUNDLES
+from core.i18n.enums import BundleEnum, LanguageEnum
+
+
+def get_i18n_messages(language: LanguageEnum) -> dict[str, str]:
+    messages: dict[str, str] = {}
+    for bundle in BundleEnum:
+        if bundle is not BundleEnum.PERSONAL_WORKSPACE:
+            messages.update(BUNDLES[bundle][language])
+    return messages
 
 
 class TestI18nCatalog:

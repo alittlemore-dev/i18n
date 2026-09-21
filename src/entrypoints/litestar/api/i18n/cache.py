@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 from litestar import Request
 
-from core.i18n.catalogs import CATALOGS
+from core.i18n.catalogs import BUNDLES
 from core.i18n.enums import LanguageEnum
 
 
@@ -18,5 +18,5 @@ class I18nCacheKey:
 
 
 def create_i18n_cache_key(default_language: LanguageEnum) -> I18nCacheKey:
-    content = json.dumps(CATALOGS, ensure_ascii=False, sort_keys=True).encode()
+    content = json.dumps(BUNDLES, ensure_ascii=False, sort_keys=True).encode()
     return I18nCacheKey(hashlib.sha256(content).hexdigest(), default_language)

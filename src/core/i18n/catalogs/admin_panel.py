@@ -1,3 +1,5 @@
+# ruff: noqa: E501
+
 from collections.abc import Mapping
 
 from core.i18n.enums import LanguageEnum
@@ -6,232 +8,6 @@ LanguageMessages = Mapping[str, str]
 
 MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
     LanguageEnum.RU: {
-        "app.siteName": "Мой сайт",
-        "shell.nav.matrix": "Матрица компетенций",
-        "shell.nav.articles": "Статьи",
-        "shell.nav.adminPanel": "Админ-панель",
-        "shell.nav.toggleNavigation": "Открыть навигацию",
-        "shell.navigation": "Навигация по сайту",
-        "shell.services.title": "Сервисы",
-        "shell.services.workspace": "Личное рабочее пространство",
-        "shell.services.matrix": "Матрица компетенций",
-        "shell.services.articles": "Статьи",
-        "shell.services.admin": "Админ-панель",
-        "shell.account": "Меню аккаунта",
-        "shell.account.profile": "Профиль",
-        "auth.login.sessionExpired": ("Сессия истекла. Войдите снова, чтобы продолжить работу."),
-        "auth.login.identityChanged": (
-            "Вход выполнен под другим аккаунтом. Предыдущая рабочая область закрыта."
-        ),
-        "shell.settings": "Настройки",
-        "shell.auth.logoutFailed": (
-            "Не удалось завершить сессию на сервере. Локальный вход сброшен."
-        ),
-        "shell.language.failed": "Не удалось загрузить выбранный язык. Попробуйте ещё раз.",
-        "shell.theme.light": "Light",
-        "shell.theme.dark": "Dark",
-        "shell.theme.toggle": "Переключить тему",
-        "shell.auth.login": "Войти",
-        "shell.auth.logout": "Выйти",
-        "shell.auth.loggedInAs": "Вы вошли как {username}",
-        "shell.language.label": "Язык",
-        "shell.footer.docs": "Документация",
-        "shell.footer.sourceCode": "Исходный код",
-        "shell.footer.siteBuild": "Как устроен сайт",
-        "shell.footer.updates": "Обновления",
-        "shell.footer.sitemap": "Карта сайта",
-        "shell.footer.email": "Эл. почта",
-        "shell.footer.githubProfile": "Профиль GitHub",
-        "shell.footer.telegramProfile": "Профиль Telegram",
-        "shell.footer.linkedinProfile": "Профиль LinkedIn",
-        "shell.cookie.text": (
-            "Сайт использует локальное хранилище для базовой работы интерфейса, "
-            "сохранения настроек и анонимных реакций. Просмотры считаются агрегированно, "
-            "без аналитических cookies."
-        ),
-        "shell.cookie.accept": "Хорошо",
-        "shared.loading": "Загрузка",
-        "shared.retry": "Повторить",
-        "shared.empty": "Ничего не найдено.",
-        "shared.close": "Закрыть",
-        "shared.showAll": "Показать все ({count})",
-        "shared.showLess": "Свернуть",
-        "shared.cancel": "Отмена",
-        "shared.save": "Сохранить",
-        "shared.delete": "Удалить",
-        "shared.edit": "Редактировать",
-        "shared.publish": "Опубликовать",
-        "shared.unpublish": "Снять с публикации",
-        "shared.actions": "Действия",
-        "shared.destructiveAction": "опасное действие",
-        "shared.add": "Добавить",
-        "shared.back": "Назад",
-        "shared.next": "Вперёд",
-        "shared.update": "Обновить",
-        "shared.draft": "Черновик",
-        "shared.notSet": "Не задано",
-        "shared.unsavedChanges.confirmDiscard": (
-            "Есть несохранённые изменения. Если продолжить, они будут потеряны. Продолжить?"
-        ),
-        "account.title": "Личный кабинет",
-        "account.navigation": "Разделы профиля",
-        "account.sidePanel.open": "Открыть разделы профиля",
-        "account.sidePanel.close": "Закрыть разделы профиля",
-        "account.profile.title": "Профиль",
-        "account.settings.title": "Настройки",
-        "account.settings.general": "Общие",
-        "account.settings.appearance": "Внешний вид",
-        "account.settings.theme": "Тема",
-        "account.settings.autosave": "Изменения сохраняются автоматически.",
-        "account.settings.saving": "Сохранение…",
-        "account.settings.saved": "Настройки сохранены",
-        "account.settings.saveFailed": (
-            "Не удалось сохранить настройки. Попробуйте выбрать значение ещё раз."
-        ),
-        "account.settings.loadFailed": "Не удалось загрузить настройки.",
-        "account.settings.applyFailed": (
-            "Не удалось загрузить выбранный язык. Сохранённые настройки не изменены."
-        ),
-        "account.profile.edit": "Редактировать",
-        "account.profile.fullName": "ФИО",
-        "account.profile.firstName": "Имя",
-        "account.profile.lastName": "Фамилия",
-        "account.profile.middleName": "Отчество",
-        "account.profile.gender": "Пол",
-        "account.profile.gender.male": "Мужской",
-        "account.profile.gender.female": "Женский",
-        "account.profile.username": "Имя пользователя",
-        "account.profile.changeAvatar": "Заменить аватар",
-        "account.profile.removeAvatar": "Удалить аватар",
-        "account.profile.avatarAlt": "Аватар пользователя {username}",
-        "account.profile.loading": "Загрузка профиля…",
-        "account.profile.loadFailed": "Не удалось загрузить профиль.",
-        "account.profile.retry": "Повторить",
-        "account.profile.saveSuccess": "Профиль сохранён.",
-        "account.profile.avatarSaveSuccess": "Аватар обновлён.",
-        "account.profile.avatarRemoveSuccess": "Аватар удалён.",
-        "account.profile.saveFailed": "Не удалось сохранить профиль.",
-        "account.profile.avatarFailed": "Не удалось обновить аватар.",
-        "account.profile.invalidAvatarType": "Выберите изображение PNG, JPEG или WebP.",
-        "account.profile.avatarTooLarge": "Размер изображения не должен превышать 5 МБ.",
-        "account.profile.invalid": "Исправьте поля формы.",
-        "account.profile.noChanges": "Изменений для сохранения нет.",
-        "markdownEditor.mode.aria": "Режим Markdown-редактора",
-        "markdownEditor.mode.edit": "Редактор",
-        "markdownEditor.mode.source": "Исходник",
-        "markdownEditor.mode.preview": "Превью",
-        "markdownEditor.fullscreen.enter": "Развернуть редактор на весь экран",
-        "markdownEditor.fullscreen.exit": "Выйти из полноэкранного режима",
-        "markdownEditor.toolbar.aria": "Действия Markdown-редактора",
-        "markdownEditor.preview.empty": "Нет содержимого для предпросмотра.",
-        "markdownEditor.preview.imageFailed": "Не удалось загрузить изображение для предпросмотра.",
-        "markdownEditor.shortcuts.summary": "Горячие клавиши",
-        "markdownEditor.shortcuts.tabEscape": (
-            "Чтобы перейти из редактора к следующему элементу страницы, нажмите Escape, затем Tab."
-        ),
-        "markdownEditor.shortcuts.modifierHintMac": ("На macOS основная клавиша сочетаний — ⌘."),
-        "markdownEditor.shortcuts.modifierHintOther": (
-            "На Windows и Linux основная клавиша сочетаний — Ctrl."
-        ),
-        "markdownEditor.shortcuts.group.view": "Навигация",
-        "markdownEditor.shortcuts.group.headings": "Заголовки",
-        "markdownEditor.shortcuts.group.inline": "Текст и ссылки",
-        "markdownEditor.shortcuts.group.blocks": "Блоки",
-        "markdownEditor.shortcuts.group.media": "Медиа",
-        "markdownEditor.upload.uploading": "Загрузка изображения…",
-        "markdownEditor.upload.failed": "Не удалось загрузить {fileName}.",
-        "markdownEditor.upload.unsupported": "{fileName} — неподдерживаемый формат изображения.",
-        "markdownEditor.upload.retry": "Повторить",
-        "markdownEditor.upload.dismiss": "Закрыть",
-        "markdownEditor.completions": "Варианты автодополнения",
-        "markdownEditor.wikiLinks.registryUnavailable": (
-            "Не удалось загрузить варианты wiki-ссылок. Ручной ввод по-прежнему доступен."
-        ),
-        "markdownEditor.search.find": "Найти",
-        "markdownEditor.search.replace": "Заменить",
-        "markdownEditor.search.next": "Следующее",
-        "markdownEditor.search.previous": "Предыдущее",
-        "markdownEditor.search.all": "Все",
-        "markdownEditor.search.matchCase": "Учитывать регистр",
-        "markdownEditor.search.regexp": "Регулярное выражение",
-        "markdownEditor.search.byWord": "Слово целиком",
-        "markdownEditor.search.replaceAll": "Заменить все",
-        "markdownEditor.search.close": "Закрыть",
-        "markdownEditor.search.goToLine": "Перейти к строке",
-        "markdownEditor.search.go": "Перейти",
-        "markdownEditor.search.currentMatch": "Текущее совпадение",
-        "markdownEditor.search.onLine": "в строке",
-        "markdownEditor.search.replacedMatches": "Заменено совпадений: $",
-        "markdownEditor.search.replacedMatchOnLine": "Совпадение заменено в строке $",
-        "markdownEditor.command.togglePreview": "Редактор / Превью",
-        "markdownEditor.command.toggleSource": "Редактор / Исходник",
-        "markdownEditor.command.heading1": "Заголовок 1",
-        "markdownEditor.command.heading2": "Заголовок 2",
-        "markdownEditor.command.heading3": "Заголовок 3",
-        "markdownEditor.command.heading4": "Заголовок 4",
-        "markdownEditor.command.heading5": "Заголовок 5",
-        "markdownEditor.command.heading6": "Заголовок 6",
-        "markdownEditor.command.bold": "Жирный",
-        "markdownEditor.command.italic": "Курсив",
-        "markdownEditor.command.strikethrough": "Зачёркнутый",
-        "markdownEditor.command.quote": "Цитата",
-        "markdownEditor.command.unorderedList": "Маркированный список",
-        "markdownEditor.command.orderedList": "Нумерованный список",
-        "markdownEditor.command.taskList": "Список задач",
-        "markdownEditor.command.horizontalRule": "Горизонтальная линия",
-        "markdownEditor.command.link": "Ссылка",
-        "markdownEditor.command.image": "Изображение",
-        "markdownEditor.command.inlineCode": "Строчный код",
-        "markdownEditor.command.codeBlock": "Блок кода",
-        "markdownEditor.command.table": "Таблица",
-        "markdownEditor.command.search": "Поиск и замена",
-        "markdownEditor.table.table": "Таблица",
-        "markdownEditor.table.row": "Строка",
-        "markdownEditor.table.column": "Столбец",
-        "markdownEditor.table.range": "Выбранные ячейки",
-        "markdownEditor.table.menu": "Меню таблицы",
-        "markdownEditor.table.addRow": "Добавить строку",
-        "markdownEditor.table.addColumn": "Добавить столбец",
-        "markdownEditor.table.moveRow": "Переместить строку",
-        "markdownEditor.table.moveColumn": "Переместить столбец",
-        "markdownEditor.table.insertBefore": "Вставить перед",
-        "markdownEditor.table.insertAfter": "Вставить после",
-        "markdownEditor.table.duplicate": "Дублировать",
-        "markdownEditor.table.clear": "Очистить",
-        "markdownEditor.table.copy": "Копировать",
-        "markdownEditor.table.cut": "Вырезать",
-        "markdownEditor.table.delete": "Удалить",
-        "markdownEditor.table.moveBefore": "Переместить раньше",
-        "markdownEditor.table.moveAfter": "Переместить позже",
-        "markdownEditor.table.sortAscending": "Сортировать по возрастанию",
-        "markdownEditor.table.sortDescending": "Сортировать по убыванию",
-        "markdownEditor.table.alignLeft": "Выровнять по левому краю",
-        "markdownEditor.table.alignCenter": "Выровнять по центру",
-        "markdownEditor.table.alignRight": "Выровнять по правому краю",
-        "markdownEditor.table.format": "Форматировать таблицу",
-        "markdownEditor.table.deleteTable": "Удалить таблицу",
-        "markdownEditor.table.clipboardFailed": "Не удалось записать данные в буфер обмена.",
-        "validation.required": "Заполните поле.",
-        "validation.minLength": "Минимум {min} символов.",
-        "validation.maxLength": "Максимум {max} символов.",
-        "validation.slug": "Используйте строчные латинские буквы, цифры и одинарные дефисы.",
-        "validation.accountUsername": "Используйте латинские буквы, цифры, точки и подчёркивания.",
-        "validation.url": "Укажите ссылку с http или https.",
-        "validation.email": "Укажите корректный email.",
-        "validation.invalid": "Исправьте значение.",
-        "auth.login.title": "Вход в систему",
-        "auth.login.username": "Имя пользователя",
-        "auth.login.password": "Пароль",
-        "auth.login.submit": "Войти",
-        "auth.login.submitting": "Вход...",
-        "auth.login.error": "Не удалось войти. Попробуйте ещё раз.",
-        "auth.login.restrictedAccessWarning.title": (
-            "Пока только для владельца, администраторов и модераторов"
-        ),
-        "auth.login.restrictedAccessWarning.message": (
-            "На данный момент вход работает только для команды управления. "
-            "В будущем здесь появится вход для обычных пользователей."
-        ),
         "adminPanel.title": "Админ-панель",
         "adminPanel.header.backToHome": "На главную",
         "adminPanel.sidePanel.open": "Открыть разделы",
@@ -262,9 +38,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTools.title": "Служебные инструменты",
         "adminTools.description": "Ручные операции и наблюдаемое состояние сервисов.",
         "adminTools.cache.title": "Кэш ответов",
-        "adminTools.cache.description": (
-            "Состояние ключей по доменам и ручное управление очисткой и прогревом."
-        ),
+        "adminTools.cache.description": "Состояние ключей по доменам и ручное управление очисткой и "
+        "прогревом.",
         "adminTools.cache.enabled": "Включён",
         "adminTools.cache.disabled": "Выключен",
         "adminTools.cache.configuredTtl": "Настроенный TTL, секунд",
@@ -282,9 +57,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTools.cache.domain.competencyMatrix": "Матрица компетенций",
         "adminTools.cache.lastWarm": "Последний ручной прогрев",
         "adminTools.cache.noWarm": "Ручной прогрев ещё не запускался.",
-        "adminTools.cache.warmSummary": (
-            "Целей: {attempted}; записано: {written}; пропущено: {skipped}."
-        ),
+        "adminTools.cache.warmSummary": "Целей: {attempted}; записано: {written}; пропущено: {skipped}.",
         "adminTools.cache.status.queued": "В очереди",
         "adminTools.cache.status.running": "Выполняется",
         "adminTools.cache.status.succeeded": "Успешно",
@@ -293,7 +66,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTools.cache.clearing": "Очистка…",
         "adminTools.cache.warm": "Запустить прогрев",
         "adminTools.cache.warming": "Прогрев выполняется…",
-        "adminTools.cache.confirmClear": ("Очистить кэш? Прогрев автоматически не запустится."),
+        "adminTools.cache.confirmClear": "Очистить кэш? Прогрев автоматически не запустится.",
         "adminTools.cache.clearSuccess": "Кэш очищен. Прогрев не запускался.",
         "adminTools.cache.clearError": "Не удалось очистить кэш.",
         "adminTools.cache.warmStartError": "Не удалось запустить прогрев кэша.",
@@ -303,18 +76,13 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTools.cache.warmFailed": "Прогрев кэша завершился с ошибкой.",
         "adminTools.cache.actionRetryHint": "Можно повторить действие кнопкой ниже.",
         "adminTools.cache.loadError": "Не удалось загрузить состояние кэша.",
-        "adminTools.cache.refreshError": (
-            "Не удалось обновить метрики кэша; показаны предыдущие значения."
-        ),
+        "adminTools.cache.refreshError": "Не удалось обновить метрики кэша; показаны предыдущие значения.",
         "adminTools.sessions.title": "Протухшие сессии",
-        "adminTools.sessions.description": (
-            "Оценка истёкших и скоро истекающих сессий перед ручной очисткой."
-        ),
+        "adminTools.sessions.description": "Оценка истёкших и скоро истекающих сессий перед ручной "
+        "очисткой.",
         "adminTools.sessions.expiredMetric": "Протухшие: {count}",
-        "adminTools.sessions.expiringSoonMetric": ("Истекут в ближайшие {days} дней: {count}"),
-        "adminTools.sessions.scheduledPruneInterval": (
-            "Интервал плановой очистки: {seconds} секунд."
-        ),
+        "adminTools.sessions.expiringSoonMetric": "Истекут в ближайшие {days} дней: {count}",
+        "adminTools.sessions.scheduledPruneInterval": "Интервал плановой очистки: {seconds} секунд.",
         "adminTools.sessions.prune": "Очистить протухшие",
         "adminTools.sessions.pruning": "Очистка…",
         "adminTools.sessions.confirmPrune": "Удалить все протухшие сессии?",
@@ -322,9 +90,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTools.sessions.pruneError": "Не удалось очистить протухшие сессии.",
         "adminTools.sessions.loadError": "Не удалось загрузить состояние сессий.",
         "adminAgentClients.title": "Доступ AI-агентов",
-        "adminAgentClients.description": (
-            "Регистрация mTLS-клиентов, их полномочия, сертификаты и журнал действий."
-        ),
+        "adminAgentClients.description": "Регистрация mTLS-клиентов, их полномочия, сертификаты и журнал "
+        "действий.",
         "adminAgentClients.register": "Зарегистрировать агента",
         "adminAgentClients.registerTitle": "Регистрация AI-агента",
         "adminAgentClients.registerSubmit": "Выпустить сертификат",
@@ -338,26 +105,23 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminAgentClients.csrPem": "CSR в формате PEM",
         "adminAgentClients.csrHelp": "Вставьте полный PEM-блок CSR.",
         "adminAgentClients.csrInstructionsTitle": "Как создать CSR",
-        "adminAgentClients.csrInstructionsBody": (
-            "Выполните команду на устройстве агента. Требуется OpenSSL. Она создаст локальный "
-            "приватный ключ EC P-256 и CSR в формате PEM."
-        ),
+        "adminAgentClients.csrInstructionsBody": "Выполните команду на устройстве агента. Требуется "
+        "OpenSSL. Она создаст локальный приватный ключ EC P-256 "
+        "и CSR в формате PEM.",
         "adminAgentClients.csrPosixTitle": "Linux/macOS (Bash/Zsh)",
         "adminAgentClients.csrAdvancedSummary": "Windows PowerShell и буфер обмена",
         "adminAgentClients.csrPowerShellTitle": "Windows PowerShell",
-        "adminAgentClients.csrClipboardHelp": (
-            "Команды ниже копируют уже созданный CSR. В Linux/macOS выбирается доступный Wayland, "
-            "X11 или macOS-инструмент; если его нет, CSR выводится в терминал."
-        ),
+        "adminAgentClients.csrClipboardHelp": "Команды ниже копируют уже созданный CSR. В Linux/macOS "
+        "выбирается доступный Wayland, X11 или macOS-инструмент; "
+        "если его нет, CSR выводится в терминал.",
         "adminAgentClients.csrPosixClipboardTitle": "Linux/macOS: скопировать CSR",
-        "adminAgentClients.csrPowerShellClipboardTitle": ("Windows PowerShell: скопировать CSR"),
+        "adminAgentClients.csrPowerShellClipboardTitle": "Windows PowerShell: скопировать CSR",
         "adminAgentClients.csrCopyCommand": "Копировать команду",
         "adminAgentClients.csrCommandCopied": "Команда скопирована.",
         "adminAgentClients.csrCommandCopyError": "Не удалось скопировать команду.",
-        "adminAgentClients.csrPrivateKeyWarning": (
-            "Сохраните agent.key.pem только на устройстве агента и вставьте только CSR целиком — "
-            "от BEGIN CERTIFICATE REQUEST до END CERTIFICATE REQUEST."
-        ),
+        "adminAgentClients.csrPrivateKeyWarning": "Сохраните agent.key.pem только на устройстве агента и "
+        "вставьте только CSR целиком — от BEGIN CERTIFICATE "
+        "REQUEST до END CERTIFICATE REQUEST.",
         "adminAgentClients.issuedTitle": "Сертификат выпущен",
         "adminAgentClients.issuedWarning": "Сохраните сертификат и цепочку сейчас.",
         "adminAgentClients.certificatePem": "Клиентский сертификат",
@@ -373,9 +137,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminAgentClients.audit": "Журнал",
         "adminAgentClients.auditTitle": "Журнал действий агента",
         "adminAgentClients.auditFor": "Журнал: {name}",
-        "adminAgentClients.auditPrivacy": (
-            "Журнал содержит идентификаторы и digest входа, но не prompts и не созданный текст."
-        ),
+        "adminAgentClients.auditPrivacy": "Журнал содержит идентификаторы и digest входа, но не prompts и "
+        "не созданный текст.",
         "adminAgentClients.auditEmpty": "Действий пока нет.",
         "adminAgentClients.auditCreatedAt": "Время",
         "adminAgentClients.auditAction": "Действие",
@@ -387,9 +150,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminAgentClients.auditResult.rejected": "Отклонено",
         "adminAgentClients.auditResult.failed": "Ошибка",
         "adminAgentClients.revoke": "Отозвать навсегда",
-        "adminAgentClients.confirmRevoke": (
-            "Навсегда отозвать доступ агента {name}? Повторная активация невозможна."
-        ),
+        "adminAgentClients.confirmRevoke": "Навсегда отозвать доступ агента {name}? Повторная активация "
+        "невозможна.",
         "adminAgentClients.loadError": "Не удалось загрузить AI-агентов.",
         "adminAgentClients.validationError": "Проверьте имя, полномочия и CSR.",
         "adminAgentClients.registered": "AI-агент зарегистрирован.",
@@ -413,9 +175,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTeamWorkspace.empty": "Участники команды пока не добавлены.",
         "adminTeamWorkspace.page": "Страница",
         "adminTeamWorkspace.currentUser": "Вы",
-        "adminTeamWorkspace.usernameHelp": (
-            "3-255 символов: латинские буквы, цифры, точка и подчёркивание."
-        ),
+        "adminTeamWorkspace.usernameHelp": "3-255 символов: латинские буквы, цифры, точка и "
+        "подчёркивание.",
         "adminTeamWorkspace.field.username": "Имя пользователя",
         "adminTeamWorkspace.field.role": "Роль",
         "adminTeamWorkspace.field.status": "Статус",
@@ -496,13 +257,10 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminMatrixWorkspace.optionsError": "Не удалось загрузить фильтры матрицы.",
         "adminMatrixWorkspace.confirmDelete": "Удалить вопрос матрицы?",
         "adminMatrixWorkspace.generateSlug": "Сгенерировать",
-        "adminMatrixWorkspace.publicLinkUnavailable": (
-            "Публичная страница доступна только для опубликованных "
-            "и полностью заполненных вопросов."
-        ),
-        "adminMatrixWorkspace.publishMissingFields": (
-            "Нельзя опубликовать вопрос: устраните блокеры публикации — {fields}."
-        ),
+        "adminMatrixWorkspace.publicLinkUnavailable": "Публичная страница доступна только для "
+        "опубликованных и полностью заполненных вопросов.",
+        "adminMatrixWorkspace.publishMissingFields": "Нельзя опубликовать вопрос: устраните блокеры "
+        "публикации — {fields}.",
         "adminMatrixWorkspace.sort.newest": "Сначала новые",
         "adminMatrixWorkspace.sort.oldest": "Сначала старые",
         "adminMatrixWorkspace.sort.grade": "Грейд",
@@ -567,10 +325,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminMatrixQueue.addManualError": "Не удалось добавить вопрос в очередь.",
         "adminMatrixQueue.importDrop": "Перетащите файл сюда или выберите его",
         "adminMatrixQueue.importChooseFile": "Выбрать файл",
-        "adminMatrixQueue.importHelp": (
-            "TXT: один вопрос на строку. CSV, XLSX и XLSM: колонки question, sheet, grade; "
-            "sheet и grade необязательны."
-        ),
+        "adminMatrixQueue.importHelp": "TXT: один вопрос на строку. CSV, XLSX и XLSM: колонки question, "
+        "sheet, grade; sheet и grade необязательны.",
         "adminMatrixQueue.importSelectedFile": "Выбран файл: {filename}",
         "adminMatrixQueue.importPreviewSubmit": "Проверить файл",
         "adminMatrixQueue.importPreviewSubmitting": "Проверка...",
@@ -580,9 +336,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminMatrixQueue.importError": "Не удалось импортировать вопросы.",
         "adminMatrixQueue.importOneFileOnly": "Выберите один файл.",
         "adminMatrixQueue.importChooseAnotherFile": "Выбрать другой файл",
-        "adminMatrixQueue.importPreviewSummary": (
-            "Валидных: {valid}; ошибок: {invalid}; дублей: {duplicates}; выбрано: {selected}."
-        ),
+        "adminMatrixQueue.importPreviewSummary": "Валидных: {valid}; ошибок: {invalid}; дублей: "
+        "{duplicates}; выбрано: {selected}.",
         "adminMatrixQueue.importSelect": "Выбрать",
         "adminMatrixQueue.importRow": "Строка",
         "adminMatrixQueue.importQuestion": "Вопрос",
@@ -594,15 +349,12 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminMatrixQueue.importSelectAtLeastOne": "Выберите хотя бы одну валидную строку.",
         "adminMatrixQueue.importIssue.questionNotText": "Вопрос должен быть текстом.",
         "adminMatrixQueue.importIssue.questionBlank": "Вопрос не должен быть пустым.",
-        "adminMatrixQueue.importIssue.questionTooLong": (
-            "Вопрос должен содержать не более {max} символов."
-        ),
+        "adminMatrixQueue.importIssue.questionTooLong": "Вопрос должен содержать не более {max} символов.",
         "adminMatrixQueue.importIssue.sheetNotText": "Лист должен быть текстом.",
         "adminMatrixQueue.importIssue.gradeNotText": "Грейд должен быть текстом.",
-        "adminMatrixQueue.importIssue.gradeInvalid": (
-            "Грейд должен быть одним из: Junior, Junior+, Middle, Middle+, Senior."
-        ),
-        "adminMatrixQueue.importIssue.duplicateInFile": ("Повтор строки {rows} в выбранном файле."),
+        "adminMatrixQueue.importIssue.gradeInvalid": "Грейд должен быть одним из: Junior, Junior+, "
+        "Middle, Middle+, Senior.",
+        "adminMatrixQueue.importIssue.duplicateInFile": "Повтор строки {rows} в выбранном файле.",
         "adminMatrixQueue.importIssue.duplicateInQueue": "Такой вопрос уже есть в очереди.",
         "adminMatrixQueue.reject": "Отклонить",
         "adminMatrixQueue.rejectQuestion": "Отклонить вопрос «{question}»",
@@ -623,145 +375,9 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminMatrixQueue.claimReleased": "Блокировка агента снята.",
         "adminMatrixQueue.claimReleaseError": "Не удалось снять блокировку агента.",
         "adminMatrixQueue.claimConflict": "Вопрос уже занят AI-агентом. Очередь обновлена.",
-        "siteBuild.seo.title": "Как устроен сайт",
-        "siteBuild.seo.description": (
-            "Инженерный разбор устройства портфолио и платформы публикаций."
-        ),
-        "siteBuild.hero.kicker": "Инженерный разбор",
-        "siteBuild.hero.title": "Как устроен этот сайт",
-        "siteBuild.hero.lead": (
-            "Инженерный разбор production-подхода к портфолио и публикационной платформе: "
-            "архитектура, локализация, управление контентом, качество, безопасность "
-            "и инфраструктура."
-        ),
-        "siteBuild.hero.sourceCode": "Исходный код",
-        "siteBuild.hero.matrixLink": "Открыть матрицу",
-        "siteBuild.hero.logoAlt": "Логотип сайта",
-        "siteBuild.problem.title": "Задача",
-        "siteBuild.problem.body": (
-            "Сайт объединяет статьи, матрицу компетенций и разбор собственной архитектуры. "
-            "Он должен быть полезным читателям, удобным для автора и одновременно показывать "
-            "реальные инженерные решения, а не только список технологий."
-        ),
-        "siteBuild.architecture.title": "Архитектура",
-        "siteBuild.architecture.backendTitle": "Backend",
-        "siteBuild.architecture.backendBody": (
-            "Litestar, SQLAlchemy, Dishka и PostgreSQL образуют API-first backend с "
-            "явными границами между доменной логикой, HTTP-слоем, инфраструктурой и хранением. "
-            "Статьи, матрица компетенций, управление командой и служебные инструменты сохраняют "
-            "собственные контракты, а общие механизмы остаются ниже транспортной границы."
-        ),
-        "siteBuild.architecture.frontendTitle": "Frontend",
-        "siteBuild.architecture.frontendBody": (
-            "Angular hybrid SSR/CSR и backend-driven i18n дают SEO для публичных страниц, "
-            "а read-only матрица и статьи отделены от protected workspaces: контентом управляют "
-            "владелец, администраторы и модераторы, а командой — владелец и администраторы."
-        ),
-        "siteBuild.architecture.infraTitle": "Infrastructure",
-        "siteBuild.architecture.infraBody": (
-            "nginx, Docker, MinIO с S3-compatible media storage, Valkey и TaskIQ разделяют "
-            "edge routing, файлы, кэш, фоновые задачи и runtime frontend/backend контейнеров, "
-            "а публичный трафик переключается между blue/green слотами после health checks. "
-            "Для public-media PostgreSQL отслеживает жизненный цикл ссылок, а фоновая "
-            "TaskIQ-задача безопасно удаляет неиспользуемые объекты после настраиваемого периода "
-            "хранения и повторяет неудачные операции. "
-            "Edge nginx самовосстанавливается после устойчивого отказа локального liveness "
-            "endpoint и использует restart policy для перезапуска Docker или VPS."
-        ),
-        "siteBuild.architecture.agentTitle": "Безопасный AI-доступ",
-        "siteBuild.architecture.agentBody": (
-            "Ограниченный Agent REST-контур смонтирован в основном Litestar-приложении без "
-            "отдельного процесса и Unix-сокета. Приватную границу сохраняет отдельный "
-            "WireGuard-bound nginx mTLS-listener с точным allowlist; публичный listener возвращает "
-            "404 для внутреннего пути и удаляет поддельный certificate header. Локальный stdio "
-            "MCP-мост открывает ограниченный набор Draft-only операций без publish, generic CRUD, "
-            "SQL, shell или URL fetch. "
-            "Упрощение осознанно оставляет общими с backend процесс, роль БД, секреты и "
-            "доступность: "
-            "изоляция private application network и доверие к nginx остаются частью boundary."
-        ),
-        "siteBuild.decisions.title": "Инженерные решения",
-        "siteBuild.decision.cleanArchitecture": (
-            "Clean Architecture: доменная логика не зависит от Litestar, SQLAlchemy или "
-            "внешних сервисов."
-        ),
-        "siteBuild.decision.localizedContent": (
-            "RU/EN локализация разделена на UI-каталог и контентные поля, чтобы не "
-            "смешивать интерфейс со статьями и матрицей."
-        ),
-        "siteBuild.decision.privacyAnalytics": (
-            "Privacy-safe аналитика считает просмотры и реакции без cookies, raw IP, "
-            "user-agent или сторонних идентификаторов."
-        ),
-        "siteBuild.decision.deployManifest": (
-            "Деплой оформлен как управляемый release process с ручным запуском: "
-            "runtime-конфигурация собирается из manifest, CI quality gates отделены "
-            "от deploy workflow, ручное подтверждение production environment остаётся "
-            "явным, а blue/green переключение с health checks снижает риск релиза."
-        ),
-        "siteBuild.quality.title": "Качество и эксплуатация",
-        "siteBuild.quality.body": (
-            "Качество держится на коротких проверках: стиль, типы, unit/integration тесты, "
-            "безопасность, SSR smoke, производительность и SQL-планы. "
-            "Они остаются CI evidence перед релизом, а production deploy запускается вручную "
-            "и переключает blue/green трафик только после health checks. В эксплуатации "
-            "фоновые задачи, кэш, файлы и runtime контейнеры разделены по ответственности; "
-            "публичные ассеты обслуживаются с CSP и immutable caching."
-        ),
-        "siteBuild.next.title": "Что дальше",
-        "siteBuild.next.body": (
-            "Ближайшие направления: RSS/Atom, публичный roadmap и дальнейшая "
-            "работа над наблюдаемостью, производительностью и качеством контента."
-        ),
-        "siteBuild.next.articlesLink": "Перейти к статьям",
-        "updates.seo.title": "Обновления",
-        "updates.seo.description": "Публичный журнал изменений сайта.",
-        "updates.hero.kicker": "Журнал изменений",
-        "updates.hero.title": "Обновления сайта",
-        "updates.hero.lead": (
-            "Крупные изменения сайта, сгруппированные по месяцам: "
-            "публичный контент, админка, качество, безопасность и инфраструктура."
-        ),
-        "updates.tag.frontend": "Frontend",
-        "updates.tag.backend": "Backend",
-        "updates.tag.content": "Контент",
-        "updates.tag.seo": "SEO",
-        "updates.tag.analytics": "Аналитика",
-        "updates.tag.matrix": "Матрица",
-        "updates.tag.infra": "Инфраструктура",
-        "updates.tag.admin": "Админка",
-        "updates.tag.auth": "Auth",
-        "updates.tag.localization": "Локализация",
-        "updates.tag.quality": "Качество",
-        "updates.tag.security": "Безопасность",
-        "updates.tag.delivery": "Доставка",
-        "matrix.seo.title": "Матрица компетенций",
-        "matrix.seo.description": "Матрица компетенций Junior/Middle/Senior разработчика.",
-        "matrix.title": "Матрица компетенций",
         "matrix.addQuestion": "Добавить вопрос",
-        "matrix.suggestQuestion": "Предложить вопрос",
-        "matrix.empty": "Вопросы не найдены.",
-        "matrix.detailAria": "Детализация вопроса",
-        "matrix.suggestion.title": "Предложить вопрос",
-        "matrix.suggestion.question": "Вопрос",
-        "matrix.suggestion.placeholder": "Напишите вопрос, которого не хватает в матрице",
-        "matrix.suggestion.submit": "Отправить",
-        "matrix.suggestion.submitting": "Отправка...",
-        "matrix.suggestion.sent": "Вопрос отправлен на рассмотрение.",
-        "matrix.suggestion.error": "Не удалось отправить вопрос.",
-        "matrix.suggestion.duplicate": (
-            "Такой вопрос уже есть в матрице или ожидает рассмотрения."
-        ),
-        "matrix.suggestion.noSheets": (
-            "Нет публичных листов, для которых можно предложить вопрос."
-        ),
-        "matrix.suggestion.sheetRequired": "Выберите публичный лист для вопроса.",
-        "matrix.suggestion.quotaExceeded": "Лимит предложений на сегодня исчерпан.",
         "matrix.modal.create": "Добавление вопроса",
         "matrix.modal.edit": "Редактирование вопроса",
-        "matrix.question.notFoundTitle": "Вопрос не найден",
-        "matrix.question.notFoundDescription": "Вопрос матрицы недоступен или ещё не опубликован.",
-        "matrix.question.backToMatrix": "Назад",
         "matrix.form.question": "Вопрос",
         "matrix.form.viewMode": "Режим формы",
         "matrix.form.editMode": "Редактирование",
@@ -777,10 +393,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.form.questionEn": "Вопрос EN",
         "matrix.form.slug": "Slug",
         "matrix.form.sheetKey": "Ключ листа",
-        "matrix.form.missingSheetKey": (
-            "Лист с ключом {key} не найден. Создайте лист и заполните названия RU/EN."
-        ),
-        "matrix.form.sheet": "Лист",
+        "matrix.form.missingSheetKey": "Лист с ключом {key} не найден. Создайте лист и заполните названия "
+        "RU/EN.",
         "matrix.form.sheetRu": "Лист RU",
         "matrix.form.sheetEn": "Лист EN",
         "matrix.form.grade": "Грейд",
@@ -799,10 +413,9 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.form.interviewAnswerExplanation": "Объяснение ответа на собеседовании",
         "matrix.form.interviewAnswerExplanationRu": "Объяснение ответа на собеседовании RU",
         "matrix.form.interviewAnswerExplanationEn": "Объяснение ответа на собеседовании EN",
-        "matrix.form.interviewAnswerExplanationHint": (
-            "Объясните, зачем задают вопрос, какой ответ ожидается и почему, а также "
-            "какие ошибки часто допускают кандидаты."
-        ),
+        "matrix.form.interviewAnswerExplanationHint": "Объясните, зачем задают вопрос, какой ответ "
+        "ожидается и почему, а также какие ошибки часто "
+        "допускают кандидаты.",
         "matrix.form.wikiLinksMissing": "Не найдены wiki-цели: {targets}.",
         "matrix.readiness.aria": "Готовность вопроса матрицы",
         "matrix.readiness.title": "Готовность",
@@ -824,12 +437,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.readiness.field.questionEn": "Вопрос EN",
         "matrix.readiness.field.answerRu": "Ответ RU",
         "matrix.readiness.field.answerEn": "Ответ EN",
-        "matrix.readiness.field.interviewAnswerExplanationRu": (
-            "Объяснение ответа на собеседовании RU"
-        ),
-        "matrix.readiness.field.interviewAnswerExplanationEn": (
-            "Объяснение ответа на собеседовании EN"
-        ),
+        "matrix.readiness.field.interviewAnswerExplanationRu": "Объяснение ответа на собеседовании RU",
+        "matrix.readiness.field.interviewAnswerExplanationEn": "Объяснение ответа на собеседовании EN",
         "matrix.readiness.field.resources": "Приложенные ресурсы",
         "matrix.readiness.field.resourceNameTranslation": "Название ресурса {resource}",
         "matrix.readiness.field.resourceContextRu": "Контекст RU — {resource}",
@@ -838,35 +447,26 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.readiness.reason.invalidDraft": "Исправьте поле для сохранения черновика.",
         "matrix.readiness.reason.requiredForDraft": "Обязательно для сохранения черновика.",
         "matrix.readiness.reason.requiredForPublication": "Обязательно для публикации.",
-        "matrix.readiness.reason.recommendedMetadata": (
-            "Укажите значение, чтобы читателю был понятен контекст."
-        ),
-        "matrix.readiness.reason.resourceRecommended": ("Добавьте хотя бы один полезный источник."),
+        "matrix.readiness.reason.recommendedMetadata": "Укажите значение, чтобы читателю был понятен "
+        "контекст.",
+        "matrix.readiness.reason.resourceRecommended": "Добавьте хотя бы один полезный источник.",
         "matrix.readiness.reason.contextRecommended": "Добавьте контекст использования ресурса.",
-        "matrix.readiness.reason.identical": (
-            "RU и EN совпадают: переведите или подтвердите совпадение."
-        ),
-        "matrix.readiness.saveBlocked": (
-            "Черновик не сохранён: исправьте блокирующие поля ({count})."
-        ),
+        "matrix.readiness.reason.identical": "RU и EN совпадают: переведите или подтвердите совпадение.",
+        "matrix.readiness.saveBlocked": "Черновик не сохранён: исправьте блокирующие поля ({count}).",
         "matrix.translation.title": "Перевод RU → EN",
-        "matrix.translation.description": (
-            "Сверяйте русский источник с английской версией и переносите переводы "
-            "из любого внешнего сервиса через структурированный JSON-пакет."
-        ),
+        "matrix.translation.description": "Сверяйте русский источник с английской версией и переносите "
+        "переводы из любого внешнего сервиса через структурированный "
+        "JSON-пакет.",
         "matrix.translation.copyAll": "Копировать весь RU-пакет",
         "matrix.translation.previewEn": "Предпросмотр EN",
         "matrix.translation.completeness": "Готовность EN-перевода",
         "matrix.translation.sourceRu": "Источник RU",
         "matrix.translation.targetEn": "Перевод EN",
         "matrix.translation.copySource": "Копировать RU",
-        "matrix.translation.sharedResourceReadOnly": (
-            "Имя общего ресурса управляется отдельно и здесь доступно только для проверки."
-        ),
-        "matrix.translation.identicalWarning": (
-            "RU и EN совпадают после нормализации. Переведите текст или подтвердите, "
-            "что он намеренно одинаковый."
-        ),
+        "matrix.translation.sharedResourceReadOnly": "Имя общего ресурса управляется отдельно и здесь "
+        "доступно только для проверки.",
+        "matrix.translation.identicalWarning": "RU и EN совпадают после нормализации. Переведите текст "
+        "или подтвердите, что он намеренно одинаковый.",
         "matrix.translation.reviewIdentical": "Подтвердить совпадение",
         "matrix.translation.reviewed": "Совпадение подтверждено.",
         "matrix.translation.copyUnavailable": "В этом поле нет RU-текста для копирования.",
@@ -875,9 +475,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.translation.copySuccess": "Текст скопирован.",
         "matrix.translation.field.question": "Вопрос",
         "matrix.translation.field.answer": "Ответ",
-        "matrix.translation.field.interviewAnswerExplanation": (
-            "Объяснение ответа на собеседовании"
-        ),
+        "matrix.translation.field.interviewAnswerExplanation": "Объяснение ответа на собеседовании",
         "matrix.translation.field.name": "Название ресурса",
         "matrix.translation.field.context": "Контекст ресурса",
         "matrix.translation.status.complete": "Переведено",
@@ -887,10 +485,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.translation.status.reviewed": "Совпадение проверено",
         "matrix.translation.status.notApplicable": "Не требуется",
         "matrix.translation.import.title": "Импорт EN-пакета",
-        "matrix.translation.import.help": (
-            "Вставьте JSON v1 или один блок ```json```. Сначала проверьте изменения, "
-            "затем выберите поля для применения."
-        ),
+        "matrix.translation.import.help": "Вставьте JSON v1 или один блок ```json```. Сначала проверьте "
+        "изменения, затем выберите поля для применения.",
         "matrix.translation.import.preview": "Проверить пакет",
         "matrix.translation.import.current": "Текущий EN",
         "matrix.translation.import.imported": "Импортируемый EN",
@@ -903,9 +499,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.translation.import.error.invalidJson": "Не удалось прочитать JSON.",
         "matrix.translation.import.error.invalidEnvelope": "Структура пакета не поддерживается.",
         "matrix.translation.import.error.unsupportedVersion": "Версия пакета не поддерживается.",
-        "matrix.translation.import.error.invalidLanguageDirection": (
-            "Пакет должен переводить с RU на EN."
-        ),
+        "matrix.translation.import.error.invalidLanguageDirection": "Пакет должен переводить с RU на EN.",
         "matrix.translation.import.error.invalidFields": "Поля пакета имеют неверный формат.",
         "matrix.translation.import.status.changed": "Изменение",
         "matrix.translation.import.status.unchanged": "Без изменений",
@@ -917,36 +511,12 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.translation.import.issue.staleSource": "RU-источник не совпадает с текущим.",
         "matrix.translation.import.issue.emptyTranslation": "EN-перевод пуст.",
         "matrix.translation.import.issue.translationTooLong": "EN-перевод слишком длинный.",
-        "matrix.translation.import.issue.protectedContentChanged": (
-            "Изменены code, URL или typed wiki targets."
-        ),
+        "matrix.translation.import.issue.protectedContentChanged": "Изменены code, URL или typed wiki "
+        "targets.",
         "matrix.translation.import.issue.readOnlyField": "Это поле нельзя менять в форме вопроса.",
-        "matrix.resources.title": "Внешние ресурсы",
-        "matrix.resources.searchPlaceholder": "Найти ресурс",
         "matrix.resources.newNamePlaceholder": "Название нового ресурса",
-        "matrix.resources.newNameRuPlaceholder": "Название нового ресурса RU",
-        "matrix.resources.newNameEnPlaceholder": "Название нового ресурса EN",
-        "matrix.resources.urlPlaceholder": "Ссылка",
         "matrix.resources.contextPlaceholder": "Контекст для этого вопроса",
-        "matrix.resources.contextRuLabel": "Контекст RU",
-        "matrix.resources.contextEnLabel": "Контекст EN",
-        "matrix.resources.contextRuPlaceholder": "Контекст для этого вопроса RU",
-        "matrix.resources.contextEnPlaceholder": "Контекст для этого вопроса EN",
-        "matrix.resources.detach": "Открепить",
-        "matrix.detail.question": "Вопрос:",
-        "matrix.detail.interviewFrequency": "Как часто спрашивают:",
-        "matrix.detail.suggestedBy": "Кто предложил:",
-        "matrix.detail.answer": "Ответ:",
-        "matrix.detail.interviewAnswerExplanation": "Объяснение ответа на собеседовании:",
-        "matrix.detail.resources": "Внешние ресурсы:",
-        "matrix.detail.openQuestion": "К вопросу",
-        "matrix.filter.searchPlaceholder": "Поиск навыков и вопросов",
-        "matrix.filter.clear": "Очистить",
-        "matrix.filter.clearSearch": "Очистить поиск",
         "matrix.filter.onlyPublished": "Только опубликованные",
-        "matrix.grid.section": "Раздел",
-        "matrix.grid.subsection": "Подраздел",
-        "matrix.grid.sheetsAria": "Листы матрицы компетенций",
         "matrix.notify.resourcesError": "Не удалось найти ресурсы.",
         "matrix.notify.saved": "Вопрос сохранён.",
         "matrix.notify.saveError": "Не удалось сохранить вопрос.",
@@ -956,8 +526,6 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.notify.unpublishError": "Не удалось снять вопрос с публикации.",
         "matrix.notify.deleted": "Вопрос удалён.",
         "matrix.notify.deleteError": "Не удалось удалить вопрос.",
-        "articles.seo.title": "Статьи",
-        "articles.seo.description": "Статьи и короткие материалы.",
         "articles.seoAnalysis.aria": "SEO-анализ статьи",
         "articles.seoAnalysis.title": "SEO-анализ",
         "articles.seoAnalysis.canonical": "Canonical",
@@ -984,106 +552,55 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "articles.seoAnalysis.check.wikiLinks": "Wiki-ссылки",
         "articles.seoAnalysis.message.titlePresent.good": "Заголовок заполнен.",
         "articles.seoAnalysis.message.titlePresent.missing": "Добавьте заголовок статьи.",
-        "articles.seoAnalysis.message.titleLength.good": (
-            "Длина {count} символов выглядит нормально."
-        ),
-        "articles.seoAnalysis.message.titleLength.warning": (
-            "Лучше держать заголовок от {min} до {max} символов; сейчас {count}."
-        ),
+        "articles.seoAnalysis.message.titleLength.good": "Длина {count} символов выглядит нормально.",
+        "articles.seoAnalysis.message.titleLength.warning": "Лучше держать заголовок от {min} до {max} "
+        "символов; сейчас {count}.",
         "articles.seoAnalysis.message.titleLength.missing": "Сначала заполните заголовок.",
         "articles.seoAnalysis.message.seoTitle.good": "SEO-заголовок подходит по длине.",
-        "articles.seoAnalysis.message.seoTitle.warning": (
-            "SEO-заголовок лучше держать от {min} до {max} символов; сейчас {count}."
-        ),
+        "articles.seoAnalysis.message.seoTitle.warning": "SEO-заголовок лучше держать от {min} до {max} "
+        "символов; сейчас {count}.",
         "articles.seoAnalysis.message.seoTitle.missing": "Добавьте SEO-заголовок.",
         "articles.seoAnalysis.message.seoDescription.good": "SEO-описание подходит по длине.",
-        "articles.seoAnalysis.message.seoDescription.warning": (
-            "SEO-описание лучше держать от {min} до {max} символов; сейчас {count}."
-        ),
+        "articles.seoAnalysis.message.seoDescription.warning": "SEO-описание лучше держать от {min} до "
+        "{max} символов; сейчас {count}.",
         "articles.seoAnalysis.message.seoDescription.missing": "Добавьте SEO-описание.",
         "articles.seoAnalysis.message.coverImage.good": "Обложка задана.",
         "articles.seoAnalysis.message.coverImage.missing": "Загрузите обложку.",
         "articles.seoAnalysis.message.coverImageAlt.good": "Alt обложки подходит по длине.",
-        "articles.seoAnalysis.message.coverImageAlt.warning": (
-            "Alt обложки лучше держать от {min} до {max} символов; сейчас {count}."
-        ),
+        "articles.seoAnalysis.message.coverImageAlt.warning": "Alt обложки лучше держать от {min} до "
+        "{max} символов; сейчас {count}.",
         "articles.seoAnalysis.message.coverImageAlt.missing": "Добавьте alt-текст обложки.",
         "articles.seoAnalysis.message.contentPresent.good": "Содержимое заполнено.",
         "articles.seoAnalysis.message.contentPresent.missing": "Добавьте содержимое статьи.",
-        "articles.seoAnalysis.message.descriptionQuality.good": (
-            "Из текста получается достаточно подробное описание."
-        ),
-        "articles.seoAnalysis.message.descriptionQuality.warning": (
-            "Описание короткое: {count} символов из рекомендуемых {min}+."
-        ),
-        "articles.seoAnalysis.message.descriptionQuality.missing": (
-            "Описание появится после добавления содержимого."
-        ),
+        "articles.seoAnalysis.message.descriptionQuality.good": "Из текста получается достаточно "
+        "подробное описание.",
+        "articles.seoAnalysis.message.descriptionQuality.warning": "Описание короткое: {count} символов "
+        "из рекомендуемых {min}+.",
+        "articles.seoAnalysis.message.descriptionQuality.missing": "Описание появится после добавления "
+        "содержимого.",
         "articles.seoAnalysis.message.slugPresent.good": "Slug заполнен.",
         "articles.seoAnalysis.message.slugPresent.missing": "Добавьте slug для URL статьи.",
         "articles.seoAnalysis.message.slugFormat.good": "Slug подходит для URL.",
-        "articles.seoAnalysis.message.slugFormat.warning": (
-            "Используйте строчные латинские буквы, цифры и дефисы."
-        ),
+        "articles.seoAnalysis.message.slugFormat.warning": "Используйте строчные латинские буквы, цифры и "
+        "дефисы.",
         "articles.seoAnalysis.message.slugFormat.missing": "Сначала заполните slug.",
         "articles.seoAnalysis.message.singleH1.good": "В Markdown нет дополнительного H1.",
-        "articles.seoAnalysis.message.singleH1.warning": (
-            "Заголовок страницы уже выводится как H1; используйте ## внутри статьи."
-        ),
-        "articles.seoAnalysis.message.contentLength.good": (
-            "Объём текста {count} слов подходит для базового анализа."
-        ),
-        "articles.seoAnalysis.message.contentLength.warning": (
-            "Текст короткий: {count} слов из рекомендуемых {min}+."
-        ),
+        "articles.seoAnalysis.message.singleH1.warning": "Заголовок страницы уже выводится как H1; "
+        "используйте ## внутри статьи.",
+        "articles.seoAnalysis.message.contentLength.good": "Объём текста {count} слов подходит для "
+        "базового анализа.",
+        "articles.seoAnalysis.message.contentLength.warning": "Текст короткий: {count} слов из "
+        "рекомендуемых {min}+.",
         "articles.seoAnalysis.message.contentLength.missing": "Сначала добавьте содержимое.",
         "articles.seoAnalysis.message.tags.good": "Есть хотя бы один тег.",
-        "articles.seoAnalysis.message.tags.warning": ("Добавьте тег, чтобы уточнить тему статьи."),
-        "articles.seoAnalysis.message.wikiLinks.good": (
-            "Все wiki-ссылки ведут на существующие цели."
-        ),
+        "articles.seoAnalysis.message.tags.warning": "Добавьте тег, чтобы уточнить тему статьи.",
+        "articles.seoAnalysis.message.wikiLinks.good": "Все wiki-ссылки ведут на существующие цели.",
         "articles.seoAnalysis.message.wikiLinks.warning": "Не найдены wiki-цели: {targets}.",
-        "articles.title": "Статьи",
-        "articles.activeTag": "Тег: {name}",
         "articles.add": "Добавить статью",
         "articles.stats.button": "Статистика",
-        "articles.filters.search": "Поиск",
-        "articles.filters.searchPlaceholder": "Заголовок или текст",
-        "articles.filters.from": "С",
-        "articles.filters.to": "По",
-        "shared.datePicker.placeholder": "дд.мм.гггг",
-        "shared.datePicker.open": "Открыть календарь",
-        "shared.datePicker.change": "Изменить дату",
-        "shared.datePicker.dialog": "Выбор даты",
-        "shared.datePicker.previousMonth": "Предыдущий месяц",
-        "shared.datePicker.nextMonth": "Следующий месяц",
-        "shared.datePicker.openMonthYearPicker": "Выбрать месяц и год",
-        "shared.datePicker.previousYear": "Предыдущий год",
-        "shared.datePicker.nextYear": "Следующий год",
-        "shared.datePicker.clear": "Очистить",
-        "shared.datePicker.close": "Закрыть",
-        "shared.datePicker.cancel": "Отмена",
-        "shared.datePicker.done": "Готово",
-        "shared.datePicker.today": "Сегодня",
-        "shared.datePicker.selectDate": "Выберите дату",
-        "shared.datePicker.formatHint": "Формат даты: ДД.ММ.ГГГГ",
-        "shared.datePicker.invalidDate": "Введите корректную дату в формате ДД.ММ.ГГГГ.",
-        "shared.datePicker.requiredDate": "Укажите дату.",
-        "shared.datePicker.unavailableDate": "Эта дата недоступна.",
-        "shared.datePicker.keyboardHelp": (
-            "Используйте стрелки для выбора дня, Page Up и Page Down для смены месяца. "
-            "Выбор изменяет черновик; нажмите «Готово», чтобы применить его. "
-            "Escape или «Отмена» отменяют изменения."
-        ),
-        "articles.filters.submit": "Найти",
-        "articles.filters.reset": "Сбросить",
-        "articles.filters.resetTag": "Сбросить тег",
         "articles.filters.onlyPublished": "Только опубликованные",
-        "articles.empty": "Статьи не найдены.",
         "articles.draft": "Черновик",
-        "articles.views": "{count} просмотров",
         "articles.back": "Назад",
-        "articles.folders": "Папки",
         "articles.folders.title": "Папки статей",
         "articles.folders.key": "Ключ",
         "articles.folders.nameRu": "Название RU",
@@ -1100,11 +617,6 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "articles.folders.saving": "Сохранение",
         "articles.folders.saved": "Порядок папок сохранён.",
         "articles.folders.saveError": "Не удалось сохранить порядок папок.",
-        "articles.sidePanel.open": "Открыть папки",
-        "articles.sidePanel.close": "Скрыть папки",
-        "articles.emptyTree": "Статей пока нет.",
-        "articles.reactions": "Реакции",
-        "articles.pagination": "Пагинация статей",
         "articles.formAria": "Форма статьи",
         "articles.modal.create": "Создание статьи",
         "articles.modal.edit": "Редактирование статьи",
@@ -1125,9 +637,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "articles.form.seoDescriptionEn": "SEO-описание EN",
         "articles.form.coverImageFile": "Загрузить обложку",
         "articles.form.coverImageReplace": "Заменить обложку",
-        "articles.form.coverImageReplaceHint": (
-            "Обложка установлена. Выберите новый файл, чтобы заменить её."
-        ),
+        "articles.form.coverImageReplaceHint": "Обложка установлена. Выберите новый файл, чтобы заменить "
+        "её.",
         "articles.form.coverImageChooseFile": "Выбрать файл",
         "articles.form.coverImageNoFileSelected": "Файл не выбран",
         "articles.form.coverImageRemove": "Удалить обложку",
@@ -1171,7 +682,6 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "articles.notify.unpublishError": "Не удалось снять статью с публикации.",
         "articles.notify.deleted": "Статья удалена.",
         "articles.notify.deleteError": "Не удалось удалить статью.",
-        "articles.notify.reactionError": "Не удалось сохранить реакцию.",
         "articles.tags.createError": "Не удалось создать тег.",
         "articles.tags.saveError": "Не удалось сохранить тег.",
         "articles.tags.deleteError": "Не удалось удалить тег.",
@@ -1199,273 +709,10 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "articles.tags.created": "Тег создан.",
         "articles.tags.saved": "Тег сохранён.",
         "articles.tags.deleted": "Тег удалён.",
-        "articles.tags.confirmDelete": (
-            "Удалить тег навсегда? Он будет убран из всех статей. Это действие нельзя отменить."
-        ),
-        "sitemap.seo.title": "Карта сайта",
-        "sitemap.seo.description": "Карта сайта.",
-        "sitemap.title": "Карта сайта",
-        "sitemap.articles": "Опубликованные статьи",
-        "sitemap.siteBuild": "Как устроен сайт",
-        "sitemap.articlesEmpty": "Опубликованных статей пока нет.",
-        "sitemap.articlesError": "Не удалось загрузить статьи.",
-        "notFound.seo.title": "Страница не найдена",
-        "notFound.seo.description": "Страница не найдена.",
-        "notFound.message": "Страница не найдена.",
-        "notFound.home": "Вернуться на главную",
-        "i18n.startupError.title": "Не удалось загрузить локализацию",
-        "i18n.startupError.message": "Проверьте соединение с API и попробуйте ещё раз.",
-        "i18n.startupError.retry": "Повторить",
-        "enum.publishStatus.Draft": "Черновик",
-        "enum.publishStatus.Published": "Опубликовано",
-        "enum.grade.Junior": "Junior",
-        "enum.grade.JuniorPlus": "Junior+",
-        "enum.grade.Middle": "Middle",
-        "enum.grade.MiddlePlus": "Middle+",
-        "enum.grade.Senior": "Senior",
-        "enum.interviewFrequency.constantly": "Постоянно",
-        "enum.interviewFrequency.often": "Часто",
-        "enum.interviewFrequency.rarely": "Очень редко",
-        "enum.interviewFrequency.neverSeen": "Никогда не видел",
-        "enum.role.anon": "Анонимный",
-        "enum.role.user": "Пользователя",
-        "enum.role.moderator": "Модератор",
-        "enum.role.admin": "Администратор",
-        "enum.role.owner": "Владелец",
-        "enum.articleReaction.heart": "Понравилось",
-        "enum.articleReaction.fire": "Хочу ещё",
-        "enum.articleReaction.thinking": "Заставило подумать",
-        "enum.articleReaction.neutral": "Нормально",
-        "enum.articleReaction.poop": "Не зашло",
-        "enum.articleViewSource.Direct": "Прямой",
-        "enum.articleViewSource.Internal": "Внутренний",
-        "enum.articleViewSource.Search": "Поиск",
-        "enum.articleViewSource.Social": "Соцсети",
-        "enum.articleViewSource.External": "Внешний",
-        "enum.articleViewSource.Unknown": "Неизвестный",
+        "articles.tags.confirmDelete": "Удалить тег навсегда? Он будет убран из всех статей. Это действие "
+        "нельзя отменить.",
     },
     LanguageEnum.EN: {
-        "app.siteName": "Competency Trainer",
-        "shell.nav.matrix": "Competency matrix",
-        "shell.nav.articles": "Articles",
-        "shell.nav.adminPanel": "Admin panel",
-        "shell.nav.toggleNavigation": "Toggle navigation",
-        "shell.navigation": "Site navigation",
-        "shell.services.title": "Services",
-        "shell.services.workspace": "Personal workspace",
-        "shell.services.matrix": "Competency matrix",
-        "shell.services.articles": "Articles",
-        "shell.services.admin": "Admin panel",
-        "shell.account": "Account menu",
-        "shell.account.profile": "Profile",
-        "auth.login.sessionExpired": ("Your session expired. Sign in again to continue."),
-        "auth.login.identityChanged": (
-            "Signed in with a different account. The previous workspace has been closed."
-        ),
-        "shell.settings": "Settings",
-        "shell.auth.logoutFailed": (
-            "Could not end the server session. You have been signed out locally."
-        ),
-        "shell.language.failed": "Could not load the selected language. Please try again.",
-        "shell.theme.light": "Light",
-        "shell.theme.dark": "Dark",
-        "shell.theme.toggle": "Toggle theme",
-        "shell.auth.login": "Log in",
-        "shell.auth.logout": "Log out",
-        "shell.auth.loggedInAs": "Logged in as {username}",
-        "shell.language.label": "Language",
-        "shell.footer.docs": "Documentation",
-        "shell.footer.sourceCode": "Source code",
-        "shell.footer.siteBuild": "How this site is built",
-        "shell.footer.updates": "Updates",
-        "shell.footer.sitemap": "Sitemap",
-        "shell.footer.email": "Email",
-        "shell.footer.githubProfile": "GitHub profile",
-        "shell.footer.telegramProfile": "Telegram profile",
-        "shell.footer.linkedinProfile": "LinkedIn profile",
-        "shell.cookie.text": (
-            "The site uses local storage for core interface behavior, saved preferences, "
-            "and anonymous reactions. Views are counted in aggregate without analytics cookies."
-        ),
-        "shell.cookie.accept": "OK",
-        "shared.loading": "Loading",
-        "shared.retry": "Retry",
-        "shared.empty": "No items found.",
-        "shared.close": "Close",
-        "shared.showAll": "Show all ({count})",
-        "shared.showLess": "Show less",
-        "shared.cancel": "Cancel",
-        "shared.save": "Save",
-        "shared.delete": "Delete",
-        "shared.edit": "Edit",
-        "shared.publish": "Publish",
-        "shared.unpublish": "Unpublish",
-        "shared.actions": "Actions",
-        "shared.destructiveAction": "destructive action",
-        "shared.add": "Add",
-        "shared.back": "Back",
-        "shared.next": "Next",
-        "shared.update": "Refresh",
-        "shared.draft": "Draft",
-        "shared.notSet": "Not set",
-        "shared.unsavedChanges.confirmDiscard": (
-            "You have unsaved changes. If you continue, they will be lost. Continue?"
-        ),
-        "account.title": "Account",
-        "account.navigation": "Profile sections",
-        "account.sidePanel.open": "Open profile sections",
-        "account.sidePanel.close": "Close profile sections",
-        "account.profile.title": "Profile",
-        "account.settings.title": "Settings",
-        "account.settings.general": "General",
-        "account.settings.appearance": "Appearance",
-        "account.settings.theme": "Theme",
-        "account.settings.autosave": "Changes are saved automatically.",
-        "account.settings.saving": "Saving…",
-        "account.settings.saved": "Settings saved",
-        "account.settings.saveFailed": "Could not save settings. Please select the value again.",
-        "account.settings.loadFailed": "Could not load settings.",
-        "account.settings.applyFailed": (
-            "Could not load the selected language. Your saved settings are unchanged."
-        ),
-        "account.profile.edit": "Edit",
-        "account.profile.fullName": "Full name",
-        "account.profile.firstName": "First name",
-        "account.profile.lastName": "Last name",
-        "account.profile.middleName": "Middle name",
-        "account.profile.gender": "Gender",
-        "account.profile.gender.male": "Male",
-        "account.profile.gender.female": "Female",
-        "account.profile.username": "Username",
-        "account.profile.changeAvatar": "Change avatar",
-        "account.profile.removeAvatar": "Remove avatar",
-        "account.profile.avatarAlt": "Avatar of {username}",
-        "account.profile.loading": "Loading profile…",
-        "account.profile.loadFailed": "Failed to load the profile.",
-        "account.profile.retry": "Retry",
-        "account.profile.saveSuccess": "Profile saved.",
-        "account.profile.avatarSaveSuccess": "Avatar updated.",
-        "account.profile.avatarRemoveSuccess": "Avatar removed.",
-        "account.profile.saveFailed": "Failed to save the profile.",
-        "account.profile.avatarFailed": "Failed to update the avatar.",
-        "account.profile.invalidAvatarType": "Choose a PNG, JPEG, or WebP image.",
-        "account.profile.avatarTooLarge": "The image must be no larger than 5 MB.",
-        "account.profile.invalid": "Fix the form fields.",
-        "account.profile.noChanges": "There are no changes to save.",
-        "markdownEditor.mode.aria": "Markdown editor mode",
-        "markdownEditor.mode.edit": "Editor",
-        "markdownEditor.mode.source": "Source",
-        "markdownEditor.mode.preview": "Preview",
-        "markdownEditor.fullscreen.enter": "Expand editor to fullscreen",
-        "markdownEditor.fullscreen.exit": "Exit fullscreen",
-        "markdownEditor.toolbar.aria": "Markdown editor actions",
-        "markdownEditor.preview.empty": "There is no content to preview.",
-        "markdownEditor.preview.imageFailed": "Could not load image preview.",
-        "markdownEditor.shortcuts.summary": "Keyboard shortcuts",
-        "markdownEditor.shortcuts.tabEscape": (
-            "To move from the editor to the next page control, press Escape, then Tab."
-        ),
-        "markdownEditor.shortcuts.modifierHintMac": ("The primary shortcut key on macOS is ⌘."),
-        "markdownEditor.shortcuts.modifierHintOther": (
-            "The primary shortcut key on Windows and Linux is Ctrl."
-        ),
-        "markdownEditor.shortcuts.group.view": "Navigation",
-        "markdownEditor.shortcuts.group.headings": "Headings",
-        "markdownEditor.shortcuts.group.inline": "Text and links",
-        "markdownEditor.shortcuts.group.blocks": "Blocks",
-        "markdownEditor.shortcuts.group.media": "Media",
-        "markdownEditor.upload.uploading": "Uploading image…",
-        "markdownEditor.upload.failed": "Could not upload {fileName}.",
-        "markdownEditor.upload.unsupported": "{fileName} is not a supported image.",
-        "markdownEditor.upload.retry": "Retry",
-        "markdownEditor.upload.dismiss": "Dismiss",
-        "markdownEditor.completions": "Completions",
-        "markdownEditor.wikiLinks.registryUnavailable": (
-            "Wiki-link suggestions could not be loaded. Manual entry is still available."
-        ),
-        "markdownEditor.search.find": "Find",
-        "markdownEditor.search.replace": "Replace",
-        "markdownEditor.search.next": "Next",
-        "markdownEditor.search.previous": "Previous",
-        "markdownEditor.search.all": "All",
-        "markdownEditor.search.matchCase": "Match case",
-        "markdownEditor.search.regexp": "Regular expression",
-        "markdownEditor.search.byWord": "Whole word",
-        "markdownEditor.search.replaceAll": "Replace all",
-        "markdownEditor.search.close": "Close",
-        "markdownEditor.search.goToLine": "Go to line",
-        "markdownEditor.search.go": "Go",
-        "markdownEditor.search.currentMatch": "Current match",
-        "markdownEditor.search.onLine": "on line",
-        "markdownEditor.search.replacedMatches": "Replaced $ matches",
-        "markdownEditor.search.replacedMatchOnLine": "Replaced match on line $",
-        "markdownEditor.command.togglePreview": "Editor / Preview",
-        "markdownEditor.command.toggleSource": "Editor / Source",
-        "markdownEditor.command.heading1": "Heading 1",
-        "markdownEditor.command.heading2": "Heading 2",
-        "markdownEditor.command.heading3": "Heading 3",
-        "markdownEditor.command.heading4": "Heading 4",
-        "markdownEditor.command.heading5": "Heading 5",
-        "markdownEditor.command.heading6": "Heading 6",
-        "markdownEditor.command.bold": "Bold",
-        "markdownEditor.command.italic": "Italic",
-        "markdownEditor.command.strikethrough": "Strikethrough",
-        "markdownEditor.command.quote": "Quote",
-        "markdownEditor.command.unorderedList": "Unordered list",
-        "markdownEditor.command.orderedList": "Ordered list",
-        "markdownEditor.command.taskList": "Task list",
-        "markdownEditor.command.horizontalRule": "Horizontal rule",
-        "markdownEditor.command.link": "Link",
-        "markdownEditor.command.image": "Image",
-        "markdownEditor.command.inlineCode": "Inline code",
-        "markdownEditor.command.codeBlock": "Code block",
-        "markdownEditor.command.table": "Table",
-        "markdownEditor.command.search": "Search and replace",
-        "markdownEditor.table.table": "Table",
-        "markdownEditor.table.row": "Row",
-        "markdownEditor.table.column": "Column",
-        "markdownEditor.table.range": "Selected cells",
-        "markdownEditor.table.menu": "Table menu",
-        "markdownEditor.table.addRow": "Add row",
-        "markdownEditor.table.addColumn": "Add column",
-        "markdownEditor.table.moveRow": "Move row",
-        "markdownEditor.table.moveColumn": "Move column",
-        "markdownEditor.table.insertBefore": "Insert before",
-        "markdownEditor.table.insertAfter": "Insert after",
-        "markdownEditor.table.duplicate": "Duplicate",
-        "markdownEditor.table.clear": "Clear",
-        "markdownEditor.table.copy": "Copy",
-        "markdownEditor.table.cut": "Cut",
-        "markdownEditor.table.delete": "Delete",
-        "markdownEditor.table.moveBefore": "Move earlier",
-        "markdownEditor.table.moveAfter": "Move later",
-        "markdownEditor.table.sortAscending": "Sort ascending",
-        "markdownEditor.table.sortDescending": "Sort descending",
-        "markdownEditor.table.alignLeft": "Align left",
-        "markdownEditor.table.alignCenter": "Align center",
-        "markdownEditor.table.alignRight": "Align right",
-        "markdownEditor.table.format": "Format table",
-        "markdownEditor.table.deleteTable": "Delete table",
-        "markdownEditor.table.clipboardFailed": "Could not write to the clipboard.",
-        "validation.required": "Fill in this field.",
-        "validation.minLength": "Use at least {min} characters.",
-        "validation.maxLength": "Use at most {max} characters.",
-        "validation.slug": "Use lowercase Latin letters, digits, and single hyphens.",
-        "validation.accountUsername": "Use Latin letters, digits, dots, and underscores.",
-        "validation.url": "Enter an http or https URL.",
-        "validation.email": "Enter a valid email.",
-        "validation.invalid": "Fix this value.",
-        "auth.login.title": "Sign in",
-        "auth.login.username": "Username",
-        "auth.login.password": "Password",
-        "auth.login.submit": "Log in",
-        "auth.login.submitting": "Signing in...",
-        "auth.login.error": "Login failed. Please try again.",
-        "auth.login.restrictedAccessWarning.title": "Owner, admins, and moderators only for now",
-        "auth.login.restrictedAccessWarning.message": (
-            "At the moment, login works only for the management team. Regular user login will be "
-            "added in the future."
-        ),
         "adminPanel.title": "Admin panel",
         "adminPanel.header.backToHome": "Home",
         "adminPanel.sidePanel.open": "Open sections",
@@ -1496,9 +743,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTools.title": "Operational tools",
         "adminTools.description": "Manual operations and observable service state.",
         "adminTools.cache.title": "Response cache",
-        "adminTools.cache.description": (
-            "Per-domain key state and manual cache clearing and warming controls."
-        ),
+        "adminTools.cache.description": "Per-domain key state and manual cache clearing and warming "
+        "controls.",
         "adminTools.cache.enabled": "Enabled",
         "adminTools.cache.disabled": "Disabled",
         "adminTools.cache.configuredTtl": "Configured TTL, seconds",
@@ -1516,9 +762,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTools.cache.domain.competencyMatrix": "Competency matrix",
         "adminTools.cache.lastWarm": "Last manual warm",
         "adminTools.cache.noWarm": "No manual cache warm has been started yet.",
-        "adminTools.cache.warmSummary": (
-            "Targets: {attempted}; written: {written}; skipped: {skipped}."
-        ),
+        "adminTools.cache.warmSummary": "Targets: {attempted}; written: {written}; skipped: {skipped}.",
         "adminTools.cache.status.queued": "Queued",
         "adminTools.cache.status.running": "Running",
         "adminTools.cache.status.succeeded": "Succeeded",
@@ -1537,18 +781,14 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTools.cache.warmFailed": "Cache warm failed.",
         "adminTools.cache.actionRetryHint": "You can retry the action with the button below.",
         "adminTools.cache.loadError": "Could not load the cache status.",
-        "adminTools.cache.refreshError": (
-            "Could not refresh cache metrics; previous values are still shown."
-        ),
+        "adminTools.cache.refreshError": "Could not refresh cache metrics; previous values are still "
+        "shown.",
         "adminTools.sessions.title": "Expired sessions",
-        "adminTools.sessions.description": (
-            "Expired and soon-expiring session counts before manual cleanup."
-        ),
+        "adminTools.sessions.description": "Expired and soon-expiring session counts before manual "
+        "cleanup.",
         "adminTools.sessions.expiredMetric": "Expired: {count}",
         "adminTools.sessions.expiringSoonMetric": "Expire within {days} days: {count}",
-        "adminTools.sessions.scheduledPruneInterval": (
-            "Scheduled cleanup interval: {seconds} seconds."
-        ),
+        "adminTools.sessions.scheduledPruneInterval": "Scheduled cleanup interval: {seconds} seconds.",
         "adminTools.sessions.prune": "Prune expired",
         "adminTools.sessions.pruning": "Pruning…",
         "adminTools.sessions.confirmPrune": "Delete all expired sessions?",
@@ -1556,9 +796,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTools.sessions.pruneError": "Could not prune expired sessions.",
         "adminTools.sessions.loadError": "Could not load the session status.",
         "adminAgentClients.title": "AI agent access",
-        "adminAgentClients.description": (
-            "Manage mTLS clients, their permissions, certificates, and audit events."
-        ),
+        "adminAgentClients.description": "Manage mTLS clients, their permissions, certificates, and audit "
+        "events.",
         "adminAgentClients.register": "Register agent",
         "adminAgentClients.registerTitle": "Register AI agent",
         "adminAgentClients.registerSubmit": "Issue certificate",
@@ -1572,26 +811,23 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminAgentClients.csrPem": "PEM CSR",
         "adminAgentClients.csrHelp": "Paste the complete PEM CSR block.",
         "adminAgentClients.csrInstructionsTitle": "How to create a CSR",
-        "adminAgentClients.csrInstructionsBody": (
-            "Run the command on the agent device. OpenSSL is required. It creates a local EC "
-            "P-256 private key and a PEM CSR."
-        ),
+        "adminAgentClients.csrInstructionsBody": "Run the command on the agent device. OpenSSL is "
+        "required. It creates a local EC P-256 private key and a "
+        "PEM CSR.",
         "adminAgentClients.csrPosixTitle": "Linux/macOS (Bash/Zsh)",
         "adminAgentClients.csrAdvancedSummary": "Windows PowerShell and clipboard options",
         "adminAgentClients.csrPowerShellTitle": "Windows PowerShell",
-        "adminAgentClients.csrClipboardHelp": (
-            "The commands below copy the CSR after it has been created. Linux/macOS selects an "
-            "available Wayland, X11, or macOS tool and prints the CSR when none is available."
-        ),
+        "adminAgentClients.csrClipboardHelp": "The commands below copy the CSR after it has been created. "
+        "Linux/macOS selects an available Wayland, X11, or macOS "
+        "tool and prints the CSR when none is available.",
         "adminAgentClients.csrPosixClipboardTitle": "Linux/macOS: copy the CSR",
         "adminAgentClients.csrPowerShellClipboardTitle": "Windows PowerShell: copy the CSR",
         "adminAgentClients.csrCopyCommand": "Copy command",
         "adminAgentClients.csrCommandCopied": "Command copied.",
         "adminAgentClients.csrCommandCopyError": "Could not copy the command.",
-        "adminAgentClients.csrPrivateKeyWarning": (
-            "Keep agent.key.pem only on the agent device and paste only the complete CSR, from "
-            "BEGIN CERTIFICATE REQUEST through END CERTIFICATE REQUEST."
-        ),
+        "adminAgentClients.csrPrivateKeyWarning": "Keep agent.key.pem only on the agent device and paste "
+        "only the complete CSR, from BEGIN CERTIFICATE REQUEST "
+        "through END CERTIFICATE REQUEST.",
         "adminAgentClients.issuedTitle": "Certificate issued",
         "adminAgentClients.issuedWarning": "Save the certificate and chain now.",
         "adminAgentClients.certificatePem": "Client certificate",
@@ -1607,9 +843,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminAgentClients.audit": "Audit",
         "adminAgentClients.auditTitle": "Agent audit log",
         "adminAgentClients.auditFor": "Audit: {name}",
-        "adminAgentClients.auditPrivacy": (
-            "The log contains IDs and input digests, but no prompts or generated text."
-        ),
+        "adminAgentClients.auditPrivacy": "The log contains IDs and input digests, but no prompts or "
+        "generated text.",
         "adminAgentClients.auditEmpty": "No actions yet.",
         "adminAgentClients.auditCreatedAt": "Time",
         "adminAgentClients.auditAction": "Action",
@@ -1621,9 +856,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminAgentClients.auditResult.rejected": "Rejected",
         "adminAgentClients.auditResult.failed": "Failed",
         "adminAgentClients.revoke": "Revoke permanently",
-        "adminAgentClients.confirmRevoke": (
-            "Permanently revoke access for {name}? The client cannot be reactivated."
-        ),
+        "adminAgentClients.confirmRevoke": "Permanently revoke access for {name}? The client cannot be "
+        "reactivated.",
         "adminAgentClients.loadError": "Failed to load AI agents.",
         "adminAgentClients.validationError": "Check the name, permissions, and CSR.",
         "adminAgentClients.registered": "AI agent registered.",
@@ -1647,9 +881,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminTeamWorkspace.empty": "No team members have been added yet.",
         "adminTeamWorkspace.page": "Page",
         "adminTeamWorkspace.currentUser": "You",
-        "adminTeamWorkspace.usernameHelp": (
-            "3-255 characters: Latin letters, digits, dots, and underscores."
-        ),
+        "adminTeamWorkspace.usernameHelp": "3-255 characters: Latin letters, digits, dots, and "
+        "underscores.",
         "adminTeamWorkspace.field.username": "Username",
         "adminTeamWorkspace.field.role": "Role",
         "adminTeamWorkspace.field.status": "Status",
@@ -1730,12 +963,10 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminMatrixWorkspace.optionsError": "Failed to load matrix filters.",
         "adminMatrixWorkspace.confirmDelete": "Delete matrix question?",
         "adminMatrixWorkspace.generateSlug": "Generate",
-        "adminMatrixWorkspace.publicLinkUnavailable": (
-            "The public page is available only for published and complete questions."
-        ),
-        "adminMatrixWorkspace.publishMissingFields": (
-            "Cannot publish the question: resolve publication blockers — {fields}."
-        ),
+        "adminMatrixWorkspace.publicLinkUnavailable": "The public page is available only for published "
+        "and complete questions.",
+        "adminMatrixWorkspace.publishMissingFields": "Cannot publish the question: resolve publication "
+        "blockers — {fields}.",
         "adminMatrixWorkspace.sort.newest": "Newest first",
         "adminMatrixWorkspace.sort.oldest": "Oldest first",
         "adminMatrixWorkspace.sort.grade": "Grade",
@@ -1800,10 +1031,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminMatrixQueue.addManualError": "Failed to add the question to the queue.",
         "adminMatrixQueue.importDrop": "Drop a file here or choose one",
         "adminMatrixQueue.importChooseFile": "Choose file",
-        "adminMatrixQueue.importHelp": (
-            "TXT: one question per line. CSV, XLSX, and XLSM: columns question, sheet, grade; "
-            "sheet and grade are optional."
-        ),
+        "adminMatrixQueue.importHelp": "TXT: one question per line. CSV, XLSX, and XLSM: columns "
+        "question, sheet, grade; sheet and grade are optional.",
         "adminMatrixQueue.importSelectedFile": "Selected file: {filename}",
         "adminMatrixQueue.importPreviewSubmit": "Preview file",
         "adminMatrixQueue.importPreviewSubmitting": "Previewing...",
@@ -1813,9 +1042,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminMatrixQueue.importError": "Failed to import questions.",
         "adminMatrixQueue.importOneFileOnly": "Choose one file.",
         "adminMatrixQueue.importChooseAnotherFile": "Choose another file",
-        "adminMatrixQueue.importPreviewSummary": (
-            "Valid: {valid}; errors: {invalid}; duplicates: {duplicates}; selected: {selected}."
-        ),
+        "adminMatrixQueue.importPreviewSummary": "Valid: {valid}; errors: {invalid}; duplicates: "
+        "{duplicates}; selected: {selected}.",
         "adminMatrixQueue.importSelect": "Select",
         "adminMatrixQueue.importRow": "Row",
         "adminMatrixQueue.importQuestion": "Question",
@@ -1827,20 +1055,13 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminMatrixQueue.importSelectAtLeastOne": "Select at least one valid row.",
         "adminMatrixQueue.importIssue.questionNotText": "Question must be text.",
         "adminMatrixQueue.importIssue.questionBlank": "Question must not be blank.",
-        "adminMatrixQueue.importIssue.questionTooLong": (
-            "Question must contain at most {max} characters."
-        ),
+        "adminMatrixQueue.importIssue.questionTooLong": "Question must contain at most {max} characters.",
         "adminMatrixQueue.importIssue.sheetNotText": "Sheet must be text.",
         "adminMatrixQueue.importIssue.gradeNotText": "Grade must be text.",
-        "adminMatrixQueue.importIssue.gradeInvalid": (
-            "Grade must be one of: Junior, Junior+, Middle, Middle+, Senior."
-        ),
-        "adminMatrixQueue.importIssue.duplicateInFile": (
-            "Duplicate of row {rows} in the selected file."
-        ),
-        "adminMatrixQueue.importIssue.duplicateInQueue": (
-            "The same question is already in the queue."
-        ),
+        "adminMatrixQueue.importIssue.gradeInvalid": "Grade must be one of: Junior, Junior+, Middle, "
+        "Middle+, Senior.",
+        "adminMatrixQueue.importIssue.duplicateInFile": "Duplicate of row {rows} in the selected file.",
+        "adminMatrixQueue.importIssue.duplicateInQueue": "The same question is already in the queue.",
         "adminMatrixQueue.reject": "Reject",
         "adminMatrixQueue.rejectQuestion": "Reject question “{question}”",
         "adminMatrixQueue.createAndNext": "Create and next question",
@@ -1859,148 +1080,11 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "adminMatrixQueue.confirmReleaseClaim": "Release the question claimed by {agent}?",
         "adminMatrixQueue.claimReleased": "Agent claim released.",
         "adminMatrixQueue.claimReleaseError": "Failed to release the agent claim.",
-        "adminMatrixQueue.claimConflict": (
-            "An AI agent has already claimed this question. The queue was refreshed."
-        ),
-        "siteBuild.seo.title": "How this site is built",
-        "siteBuild.seo.description": (
-            "An engineering case study about this portfolio and publishing platform."
-        ),
-        "siteBuild.hero.kicker": "Engineering case study",
-        "siteBuild.hero.title": "How this site is built",
-        "siteBuild.hero.lead": (
-            "Engineering case study of a production-minded portfolio and publishing platform: "
-            "architecture, localization, content authoring, quality, security, and infrastructure."
-        ),
-        "siteBuild.hero.sourceCode": "Source code",
-        "siteBuild.hero.matrixLink": "Open the matrix",
-        "siteBuild.hero.logoAlt": "Site logo",
-        "siteBuild.problem.title": "Problem",
-        "siteBuild.problem.body": (
-            "The site combines articles, a competency matrix, and architecture notes. It needs "
-            "to help readers, stay comfortable for authoring, and demonstrate real "
-            "engineering decisions instead of only listing technologies."
-        ),
-        "siteBuild.architecture.title": "Architecture",
-        "siteBuild.architecture.backendTitle": "Backend",
-        "siteBuild.architecture.backendBody": (
-            "Litestar, SQLAlchemy, Dishka, and PostgreSQL form an API-first backend with "
-            "explicit boundaries between domain logic, HTTP, infrastructure, and storage. "
-            "Articles, the competency matrix, team administration, and operational tools keep "
-            "their own contracts, while shared mechanisms stay below the transport boundary."
-        ),
-        "siteBuild.architecture.frontendTitle": "Frontend",
-        "siteBuild.architecture.frontendBody": (
-            "Angular hybrid SSR/CSR and backend-driven i18n provide SEO for public pages, "
-            "while read-only matrix and article surfaces stay separate from protected workspaces: "
-            "owner, admins, and moderators manage content, while owner and admins govern the team."
-        ),
-        "siteBuild.architecture.infraTitle": "Infrastructure",
-        "siteBuild.architecture.infraBody": (
-            "nginx, Docker, MinIO with S3-compatible media storage, Valkey, and TaskIQ "
-            "separate edge routing, files, cache, background jobs, and frontend/backend "
-            "container runtimes, while public traffic switches between blue/green slots only "
-            "after health checks pass. For public media, PostgreSQL tracks the reference "
-            "lifecycle, while "
-            "a background TaskIQ job safely removes unused objects after a configurable retention "
-            "period and retries failed operations. The "
-            "edge nginx self-recovers after a sustained local "
-            "liveness failure and uses a restart policy for Docker daemon or VPS restarts."
-        ),
-        "siteBuild.architecture.agentTitle": "Safe AI access",
-        "siteBuild.architecture.agentBody": (
-            "A bounded Agent REST surface is mounted in the main Litestar application without a "
-            "separate process or Unix socket. A dedicated WireGuard-bound nginx mTLS listener "
-            "preserves the private boundary with an exact allowlist; the public listener returns "
-            "404 for the internal path and strips forged certificate headers. A local stdio MCP "
-            "bridge exposes an allowlisted Draft-only authoring surface with no publish, generic "
-            "CRUD, SQL, shell, or URL fetch. The simplification intentionally shares the backend "
-            "process, DB role, secrets, and availability: private application-network isolation "
-            "and trust in nginx remain part of the boundary."
-        ),
-        "siteBuild.decisions.title": "Engineering decisions",
-        "siteBuild.decision.cleanArchitecture": (
-            "Clean Architecture keeps domain logic independent from Litestar, SQLAlchemy, "
-            "and external services."
-        ),
-        "siteBuild.decision.localizedContent": (
-            "RU/EN localization is split between the UI catalog and content fields, so "
-            "interface text is not mixed with articles and matrix content."
-        ),
-        "siteBuild.decision.privacyAnalytics": (
-            "Privacy-safe analytics count views and reactions without cookies, raw IPs, "
-            "user-agent strings, or third-party identifiers."
-        ),
-        "siteBuild.decision.deployManifest": (
-            "Deployment is treated as a controlled release process with a manual trigger: "
-            "runtime configuration is rendered from a manifest, CI quality gates are "
-            "decoupled from the deploy workflow, manual approval on the production "
-            "environment remains explicit, and blue/green switching with health checks "
-            "lowers rollout risk."
-        ),
-        "siteBuild.quality.title": "Quality and operations",
-        "siteBuild.quality.body": (
-            "Quality is covered by short checks: style, types, unit/integration tests, security, "
-            "SSR smoke, performance, and SQL plans. They remain CI release evidence, while "
-            "production deploy runs manually and switches blue/green traffic only after health "
-            "checks pass. In operations, background jobs, cache, files, and runtime containers "
-            "have separate responsibilities; public assets are served with CSP and immutable "
-            "caching."
-        ),
-        "siteBuild.next.title": "What is next",
-        "siteBuild.next.body": (
-            "Near-term work includes RSS/Atom, a public roadmap, and continued "
-            "work on observability, performance, and content quality."
-        ),
-        "siteBuild.next.articlesLink": "Go to articles",
-        "updates.seo.title": "Updates",
-        "updates.seo.description": "Public changelog for this site.",
-        "updates.hero.kicker": "Changelog",
-        "updates.hero.title": "Updates",
-        "updates.hero.lead": (
-            "Major changes to the site, grouped by month: public "
-            "content, admin workflows, quality, security, and infrastructure."
-        ),
-        "updates.tag.frontend": "Frontend",
-        "updates.tag.backend": "Backend",
-        "updates.tag.content": "Content",
-        "updates.tag.seo": "SEO",
-        "updates.tag.analytics": "Analytics",
-        "updates.tag.matrix": "Matrix",
-        "updates.tag.infra": "Infrastructure",
-        "updates.tag.admin": "Admin",
-        "updates.tag.auth": "Auth",
-        "updates.tag.localization": "Localization",
-        "updates.tag.quality": "Quality",
-        "updates.tag.security": "Security",
-        "updates.tag.delivery": "Delivery",
-        "matrix.seo.title": "Competency matrix",
-        "matrix.seo.description": "Competency matrix for Junior/Middle/Senior developers.",
-        "matrix.title": "Competency matrix",
+        "adminMatrixQueue.claimConflict": "An AI agent has already claimed this question. The queue was "
+        "refreshed.",
         "matrix.addQuestion": "Add question",
-        "matrix.suggestQuestion": "Suggest question",
-        "matrix.empty": "No questions found.",
-        "matrix.detailAria": "Question details",
-        "matrix.suggestion.title": "Suggest a question",
-        "matrix.suggestion.question": "Question",
-        "matrix.suggestion.placeholder": "Write the question that is missing from the matrix",
-        "matrix.suggestion.submit": "Send",
-        "matrix.suggestion.submitting": "Sending...",
-        "matrix.suggestion.sent": "Question sent for review.",
-        "matrix.suggestion.error": "Failed to send the question.",
-        "matrix.suggestion.duplicate": (
-            "This question is already in the matrix or awaiting review."
-        ),
-        "matrix.suggestion.noSheets": (
-            "There are no public sheets available for question suggestions."
-        ),
-        "matrix.suggestion.sheetRequired": "Select a public sheet for the question.",
-        "matrix.suggestion.quotaExceeded": "Today's suggestion limit has been reached.",
         "matrix.modal.create": "Add question",
         "matrix.modal.edit": "Edit question",
-        "matrix.question.notFoundTitle": "Question not found",
-        "matrix.question.notFoundDescription": "The matrix question is unavailable or unpublished.",
-        "matrix.question.backToMatrix": "Back",
         "matrix.form.question": "Question",
         "matrix.form.viewMode": "Form mode",
         "matrix.form.editMode": "Editing",
@@ -2016,10 +1100,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.form.questionEn": "Question EN",
         "matrix.form.slug": "Slug",
         "matrix.form.sheetKey": "Sheet key",
-        "matrix.form.missingSheetKey": (
-            "Sheet with key {key} was not found. Create the sheet and fill in the RU/EN names."
-        ),
-        "matrix.form.sheet": "Sheet",
+        "matrix.form.missingSheetKey": "Sheet with key {key} was not found. Create the sheet and fill in "
+        "the RU/EN names.",
         "matrix.form.sheetRu": "Sheet RU",
         "matrix.form.sheetEn": "Sheet EN",
         "matrix.form.grade": "Grade",
@@ -2038,10 +1120,9 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.form.interviewAnswerExplanation": "Interview answer explanation",
         "matrix.form.interviewAnswerExplanationRu": "Interview answer explanation RU",
         "matrix.form.interviewAnswerExplanationEn": "Interview answer explanation EN",
-        "matrix.form.interviewAnswerExplanationHint": (
-            "Explain why the question is asked, what answer is expected and why, and which "
-            "mistakes candidates commonly make."
-        ),
+        "matrix.form.interviewAnswerExplanationHint": "Explain why the question is asked, what answer is "
+        "expected and why, and which mistakes candidates "
+        "commonly make.",
         "matrix.form.wikiLinksMissing": "Missing wiki targets: {targets}.",
         "matrix.readiness.aria": "Matrix question readiness",
         "matrix.readiness.title": "Readiness",
@@ -2073,33 +1154,28 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.readiness.reason.invalidDraft": "Fix the field before saving a draft.",
         "matrix.readiness.reason.requiredForDraft": "Required to save a draft.",
         "matrix.readiness.reason.requiredForPublication": "Required for publication.",
-        "matrix.readiness.reason.recommendedMetadata": (
-            "Set a value so readers can understand the context."
-        ),
+        "matrix.readiness.reason.recommendedMetadata": "Set a value so readers can understand the "
+        "context.",
         "matrix.readiness.reason.resourceRecommended": "Attach at least one useful source.",
         "matrix.readiness.reason.contextRecommended": "Add usage context for the resource.",
-        "matrix.readiness.reason.identical": (
-            "RU and EN match: translate the content or confirm the match."
-        ),
-        "matrix.readiness.saveBlocked": ("Draft was not saved: fix the blocking fields ({count})."),
+        "matrix.readiness.reason.identical": "RU and EN match: translate the content or confirm the "
+        "match.",
+        "matrix.readiness.saveBlocked": "Draft was not saved: fix the blocking fields ({count}).",
         "matrix.translation.title": "RU → EN translation",
-        "matrix.translation.description": (
-            "Compare the Russian source with the English version and move translations "
-            "through a structured JSON package from any external service."
-        ),
+        "matrix.translation.description": "Compare the Russian source with the English version and move "
+        "translations through a structured JSON package from any "
+        "external service.",
         "matrix.translation.copyAll": "Copy the full RU package",
         "matrix.translation.previewEn": "Preview EN",
         "matrix.translation.completeness": "EN translation completeness",
         "matrix.translation.sourceRu": "RU source",
         "matrix.translation.targetEn": "EN translation",
         "matrix.translation.copySource": "Copy RU",
-        "matrix.translation.sharedResourceReadOnly": (
-            "The shared resource name is managed separately and is read-only here."
-        ),
-        "matrix.translation.identicalWarning": (
-            "RU and EN are identical after normalization. Translate the text or confirm that "
-            "it is intentionally language-neutral."
-        ),
+        "matrix.translation.sharedResourceReadOnly": "The shared resource name is managed separately and "
+        "is read-only here.",
+        "matrix.translation.identicalWarning": "RU and EN are identical after normalization. Translate "
+        "the text or confirm that it is intentionally "
+        "language-neutral.",
         "matrix.translation.reviewIdentical": "Confirm identical text",
         "matrix.translation.reviewed": "Identical text confirmed.",
         "matrix.translation.copyUnavailable": "This field has no RU source to copy.",
@@ -2108,7 +1184,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.translation.copySuccess": "Text copied.",
         "matrix.translation.field.question": "Question",
         "matrix.translation.field.answer": "Answer",
-        "matrix.translation.field.interviewAnswerExplanation": ("Interview answer explanation"),
+        "matrix.translation.field.interviewAnswerExplanation": "Interview answer explanation",
         "matrix.translation.field.name": "Resource name",
         "matrix.translation.field.context": "Resource context",
         "matrix.translation.status.complete": "Translated",
@@ -2118,10 +1194,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.translation.status.reviewed": "Identical text reviewed",
         "matrix.translation.status.notApplicable": "Not applicable",
         "matrix.translation.import.title": "Import EN package",
-        "matrix.translation.import.help": (
-            "Paste JSON v1 or one ```json``` block. Preview the changes first, then select "
-            "which fields to apply."
-        ),
+        "matrix.translation.import.help": "Paste JSON v1 or one ```json``` block. Preview the changes "
+        "first, then select which fields to apply.",
         "matrix.translation.import.preview": "Validate package",
         "matrix.translation.import.current": "Current EN",
         "matrix.translation.import.imported": "Imported EN",
@@ -2134,12 +1208,9 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.translation.import.error.invalidJson": "The JSON could not be read.",
         "matrix.translation.import.error.invalidEnvelope": "The package shape is unsupported.",
         "matrix.translation.import.error.unsupportedVersion": "The package version is unsupported.",
-        "matrix.translation.import.error.invalidLanguageDirection": (
-            "The package must translate from RU to EN."
-        ),
-        "matrix.translation.import.error.invalidFields": (
-            "The package fields have an invalid shape."
-        ),
+        "matrix.translation.import.error.invalidLanguageDirection": "The package must translate from RU "
+        "to EN.",
+        "matrix.translation.import.error.invalidFields": "The package fields have an invalid shape.",
         "matrix.translation.import.status.changed": "Changed",
         "matrix.translation.import.status.unchanged": "Unchanged",
         "matrix.translation.import.status.invalid": "Invalid",
@@ -2150,38 +1221,13 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.translation.import.issue.staleSource": "The RU source does not match the form.",
         "matrix.translation.import.issue.emptyTranslation": "The EN translation is empty.",
         "matrix.translation.import.issue.translationTooLong": "The EN translation is too long.",
-        "matrix.translation.import.issue.protectedContentChanged": (
-            "Code, URLs, or typed wiki targets were changed."
-        ),
-        "matrix.translation.import.issue.readOnlyField": (
-            "This field cannot be changed from the question form."
-        ),
-        "matrix.resources.title": "External resources",
-        "matrix.resources.searchPlaceholder": "Find resource",
+        "matrix.translation.import.issue.protectedContentChanged": "Code, URLs, or typed wiki targets "
+        "were changed.",
+        "matrix.translation.import.issue.readOnlyField": "This field cannot be changed from the question "
+        "form.",
         "matrix.resources.newNamePlaceholder": "New resource name",
-        "matrix.resources.newNameRuPlaceholder": "New resource name RU",
-        "matrix.resources.newNameEnPlaceholder": "New resource name EN",
-        "matrix.resources.urlPlaceholder": "URL",
         "matrix.resources.contextPlaceholder": "Context for this question",
-        "matrix.resources.contextRuLabel": "Context RU",
-        "matrix.resources.contextEnLabel": "Context EN",
-        "matrix.resources.contextRuPlaceholder": "Context for this question RU",
-        "matrix.resources.contextEnPlaceholder": "Context for this question EN",
-        "matrix.resources.detach": "Detach",
-        "matrix.detail.question": "Question:",
-        "matrix.detail.interviewFrequency": "How often asked:",
-        "matrix.detail.suggestedBy": "Suggested by:",
-        "matrix.detail.answer": "Answer:",
-        "matrix.detail.interviewAnswerExplanation": "Interview answer explanation:",
-        "matrix.detail.resources": "External resources:",
-        "matrix.detail.openQuestion": "To question",
-        "matrix.filter.searchPlaceholder": "Search skills and questions",
-        "matrix.filter.clear": "Clear",
-        "matrix.filter.clearSearch": "Clear search",
         "matrix.filter.onlyPublished": "Published only",
-        "matrix.grid.section": "Section",
-        "matrix.grid.subsection": "Subsection",
-        "matrix.grid.sheetsAria": "Competency matrix sheets",
         "matrix.notify.resourcesError": "Failed to find resources.",
         "matrix.notify.saved": "Question saved.",
         "matrix.notify.saveError": "Failed to save question.",
@@ -2191,8 +1237,6 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "matrix.notify.unpublishError": "Failed to unpublish question.",
         "matrix.notify.deleted": "Question deleted.",
         "matrix.notify.deleteError": "Failed to delete question.",
-        "articles.seo.title": "Articles",
-        "articles.seo.description": "Articles and short materials.",
         "articles.seoAnalysis.aria": "Article SEO analysis",
         "articles.seoAnalysis.title": "SEO analysis",
         "articles.seoAnalysis.canonical": "Canonical",
@@ -2220,101 +1264,54 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "articles.seoAnalysis.message.titlePresent.good": "Title is filled in.",
         "articles.seoAnalysis.message.titlePresent.missing": "Add an article title.",
         "articles.seoAnalysis.message.titleLength.good": "{count} characters looks fine.",
-        "articles.seoAnalysis.message.titleLength.warning": (
-            "Keep the title between {min} and {max} characters; it is {count} now."
-        ),
+        "articles.seoAnalysis.message.titleLength.warning": "Keep the title between {min} and {max} "
+        "characters; it is {count} now.",
         "articles.seoAnalysis.message.titleLength.missing": "Fill in the title first.",
         "articles.seoAnalysis.message.seoTitle.good": "SEO title length looks useful.",
-        "articles.seoAnalysis.message.seoTitle.warning": (
-            "Keep the SEO title between {min} and {max} characters; it is {count} now."
-        ),
+        "articles.seoAnalysis.message.seoTitle.warning": "Keep the SEO title between {min} and {max} "
+        "characters; it is {count} now.",
         "articles.seoAnalysis.message.seoTitle.missing": "Add an SEO title.",
         "articles.seoAnalysis.message.seoDescription.good": "SEO description length looks useful.",
-        "articles.seoAnalysis.message.seoDescription.warning": (
-            "Keep the SEO description between {min} and {max} characters; it is {count} now."
-        ),
+        "articles.seoAnalysis.message.seoDescription.warning": "Keep the SEO description between {min} "
+        "and {max} characters; it is {count} now.",
         "articles.seoAnalysis.message.seoDescription.missing": "Add an SEO description.",
         "articles.seoAnalysis.message.coverImage.good": "Cover image is set.",
         "articles.seoAnalysis.message.coverImage.missing": "Upload a cover image.",
         "articles.seoAnalysis.message.coverImageAlt.good": "Cover alt length looks useful.",
-        "articles.seoAnalysis.message.coverImageAlt.warning": (
-            "Keep the cover alt between {min} and {max} characters; it is {count} now."
-        ),
+        "articles.seoAnalysis.message.coverImageAlt.warning": "Keep the cover alt between {min} and {max} "
+        "characters; it is {count} now.",
         "articles.seoAnalysis.message.coverImageAlt.missing": "Add cover alt text.",
         "articles.seoAnalysis.message.contentPresent.good": "Content is filled in.",
         "articles.seoAnalysis.message.contentPresent.missing": "Add article content.",
-        "articles.seoAnalysis.message.descriptionQuality.good": (
-            "The text produces a detailed enough description."
-        ),
-        "articles.seoAnalysis.message.descriptionQuality.warning": (
-            "The description is short: {count} characters out of recommended {min}+."
-        ),
-        "articles.seoAnalysis.message.descriptionQuality.missing": (
-            "The description will appear after content is added."
-        ),
+        "articles.seoAnalysis.message.descriptionQuality.good": "The text produces a detailed enough "
+        "description.",
+        "articles.seoAnalysis.message.descriptionQuality.warning": "The description is short: {count} "
+        "characters out of recommended {min}+.",
+        "articles.seoAnalysis.message.descriptionQuality.missing": "The description will appear after "
+        "content is added.",
         "articles.seoAnalysis.message.slugPresent.good": "Slug is filled in.",
         "articles.seoAnalysis.message.slugPresent.missing": "Add a slug for the article URL.",
         "articles.seoAnalysis.message.slugFormat.good": "Slug is URL friendly.",
-        "articles.seoAnalysis.message.slugFormat.warning": (
-            "Use lowercase Latin letters, numbers, and hyphens."
-        ),
+        "articles.seoAnalysis.message.slugFormat.warning": "Use lowercase Latin letters, numbers, and "
+        "hyphens.",
         "articles.seoAnalysis.message.slugFormat.missing": "Fill in the slug first.",
         "articles.seoAnalysis.message.singleH1.good": "Markdown has no extra H1.",
-        "articles.seoAnalysis.message.singleH1.warning": (
-            "The page title is already rendered as H1; use ## inside the article."
-        ),
-        "articles.seoAnalysis.message.contentLength.good": (
-            "{count} words is enough for the basic analysis."
-        ),
-        "articles.seoAnalysis.message.contentLength.warning": (
-            "The text is short: {count} words out of recommended {min}+."
-        ),
+        "articles.seoAnalysis.message.singleH1.warning": "The page title is already rendered as H1; use "
+        "## inside the article.",
+        "articles.seoAnalysis.message.contentLength.good": "{count} words is enough for the basic "
+        "analysis.",
+        "articles.seoAnalysis.message.contentLength.warning": "The text is short: {count} words out of "
+        "recommended {min}+.",
         "articles.seoAnalysis.message.contentLength.missing": "Add content first.",
         "articles.seoAnalysis.message.tags.good": "At least one tag is attached.",
-        "articles.seoAnalysis.message.tags.warning": ("Add a tag to clarify the article topic."),
+        "articles.seoAnalysis.message.tags.warning": "Add a tag to clarify the article topic.",
         "articles.seoAnalysis.message.wikiLinks.good": "All wiki links point to existing targets.",
         "articles.seoAnalysis.message.wikiLinks.warning": "Missing wiki targets: {targets}.",
-        "articles.title": "Articles",
-        "articles.activeTag": "Tag: {name}",
         "articles.add": "Add article",
         "articles.stats.button": "Statistics",
-        "articles.filters.search": "Search",
-        "articles.filters.searchPlaceholder": "Title or text",
-        "articles.filters.from": "From",
-        "articles.filters.to": "To",
-        "shared.datePicker.placeholder": "mm/dd/yyyy",
-        "shared.datePicker.open": "Open calendar",
-        "shared.datePicker.change": "Change date",
-        "shared.datePicker.dialog": "Choose date",
-        "shared.datePicker.previousMonth": "Previous month",
-        "shared.datePicker.nextMonth": "Next month",
-        "shared.datePicker.openMonthYearPicker": "Choose month and year",
-        "shared.datePicker.previousYear": "Previous year",
-        "shared.datePicker.nextYear": "Next year",
-        "shared.datePicker.clear": "Clear",
-        "shared.datePicker.close": "Close",
-        "shared.datePicker.cancel": "Cancel",
-        "shared.datePicker.done": "Done",
-        "shared.datePicker.today": "Today",
-        "shared.datePicker.selectDate": "Select date",
-        "shared.datePicker.formatHint": "Date format: MM/DD/YYYY",
-        "shared.datePicker.invalidDate": "Enter a valid date in MM/DD/YYYY format.",
-        "shared.datePicker.requiredDate": "Enter a date.",
-        "shared.datePicker.unavailableDate": "This date is unavailable.",
-        "shared.datePicker.keyboardHelp": (
-            "Use arrow keys to choose a day and Page Up or Page Down to change month. "
-            "A selection updates the draft; press Done to apply it. "
-            "Escape or Cancel discards the changes."
-        ),
-        "articles.filters.submit": "Search",
-        "articles.filters.reset": "Reset",
-        "articles.filters.resetTag": "Reset tag",
         "articles.filters.onlyPublished": "Published only",
-        "articles.empty": "No articles found.",
         "articles.draft": "Draft",
-        "articles.views": "{count} views",
         "articles.back": "Back",
-        "articles.folders": "Folders",
         "articles.folders.title": "Article folders",
         "articles.folders.key": "Key",
         "articles.folders.nameRu": "Name RU",
@@ -2331,11 +1328,6 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "articles.folders.saving": "Saving",
         "articles.folders.saved": "Folder order saved.",
         "articles.folders.saveError": "Failed to save the folder order.",
-        "articles.sidePanel.open": "Open folders",
-        "articles.sidePanel.close": "Hide folders",
-        "articles.emptyTree": "No articles yet.",
-        "articles.reactions": "Reactions",
-        "articles.pagination": "Articles pagination",
         "articles.formAria": "Article form",
         "articles.modal.create": "Create article",
         "articles.modal.edit": "Edit article",
@@ -2356,9 +1348,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "articles.form.seoDescriptionEn": "SEO description EN",
         "articles.form.coverImageFile": "Upload cover image",
         "articles.form.coverImageReplace": "Replace cover image",
-        "articles.form.coverImageReplaceHint": (
-            "A cover image is set. Choose a new file to replace it."
-        ),
+        "articles.form.coverImageReplaceHint": "A cover image is set. Choose a new file to replace it.",
         "articles.form.coverImageChooseFile": "Choose file",
         "articles.form.coverImageNoFileSelected": "No file selected",
         "articles.form.coverImageRemove": "Remove cover image",
@@ -2402,7 +1392,6 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "articles.notify.unpublishError": "Failed to unpublish article.",
         "articles.notify.deleted": "Article deleted.",
         "articles.notify.deleteError": "Failed to delete article.",
-        "articles.notify.reactionError": "Failed to save reaction.",
         "articles.tags.createError": "Failed to create tag.",
         "articles.tags.saveError": "Failed to save tag.",
         "articles.tags.deleteError": "Failed to delete tag.",
@@ -2430,54 +1419,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "articles.tags.created": "Tag created.",
         "articles.tags.saved": "Tag saved.",
         "articles.tags.deleted": "Tag deleted.",
-        "articles.tags.confirmDelete": (
-            "Delete this tag permanently? It will be removed from every article. "
-            "This action cannot be undone."
-        ),
-        "sitemap.seo.title": "Sitemap",
-        "sitemap.seo.description": "Sitemap.",
-        "sitemap.title": "Sitemap",
-        "sitemap.articles": "Published articles",
-        "sitemap.siteBuild": "How this site is built",
-        "sitemap.articlesEmpty": "No published articles yet.",
-        "sitemap.articlesError": "Failed to load articles.",
-        "notFound.seo.title": "Page not found",
-        "notFound.seo.description": "Page not found.",
-        "notFound.message": "Page not found.",
-        "notFound.home": "Back to home",
-        "i18n.startupError.title": "Failed to load localization",
-        "i18n.startupError.message": "Check the API connection and try again.",
-        "i18n.startupError.retry": "Retry",
-        "enum.publishStatus.Draft": "Draft",
-        "enum.publishStatus.Published": "Published",
-        "enum.grade.Junior": "Junior",
-        "enum.grade.JuniorPlus": "Junior+",
-        "enum.grade.Middle": "Middle",
-        "enum.grade.MiddlePlus": "Middle+",
-        "enum.grade.Senior": "Senior",
-        "enum.interviewFrequency.constantly": "Constantly",
-        "enum.interviewFrequency.often": "Often",
-        "enum.interviewFrequency.rarely": "Rarely",
-        "enum.interviewFrequency.neverSeen": "Never seen",
-        "enum.role.anon": "Anonymous",
-        "enum.role.user": "User",
-        "enum.role.moderator": "Moderator",
-        "enum.role.admin": "Admin",
-        "enum.role.owner": "Owner",
-        "enum.articleReaction.heart": "Liked it",
-        "enum.articleReaction.fire": "Want more",
-        "enum.articleReaction.thinking": "Made me think",
-        "enum.articleReaction.neutral": "Fine",
-        "enum.articleReaction.poop": "Did not land",
-        "enum.articleViewSource.Direct": "Direct",
-        "enum.articleViewSource.Internal": "Internal",
-        "enum.articleViewSource.Search": "Search",
-        "enum.articleViewSource.Social": "Social",
-        "enum.articleViewSource.External": "External",
-        "enum.articleViewSource.Unknown": "Unknown",
+        "articles.tags.confirmDelete": "Delete this tag permanently? It will be removed from every "
+        "article. This action cannot be undone.",
     },
 }
-
-
-def get_i18n_messages(language: LanguageEnum) -> LanguageMessages:
-    return MESSAGES[language]

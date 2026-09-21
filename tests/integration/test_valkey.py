@@ -5,8 +5,8 @@ from litestar import get
 from litestar.testing import AsyncTestClient
 from valkey.asyncio import Valkey
 
-from core.i18n.catalogs import CATALOGS
-from core.i18n.enums import CatalogEnum, LanguageEnum
+from core.i18n.catalogs import BUNDLES
+from core.i18n.enums import BundleEnum, LanguageEnum
 from infra.config.constants import constants
 from infra.config.settings import settings
 from main import create_app
@@ -66,9 +66,9 @@ async def test_catalog_responses_use_versioned_isolated_valkey_cache(
     monkeypatch.setattr(settings.app, "use_cache", True)
     monkeypatch.setattr(constants.valkey, "namespace", namespace)
     paths = [
-        f"/api/i18n{prefix}/bundles/{language}"
-        for prefix in ("", "/personal-workspace")
-        for language in ("ru", "en")
+        f"/api/i18n/bundles/{bundle}/{language}"
+        for bundle in BundleEnum
+        for language in LanguageEnum
     ]
     async with Valkey.from_url(settings.valkey.url) as valkey:
         try:
@@ -80,20 +80,22 @@ async def test_catalog_responses_use_versioned_isolated_valkey_cache(
                     assert second.json() == first.json()
                 assert (await client.get("/api/i18n/languages")).json()["defaultLanguage"] == "ru"
             original_keys = {key async for key in valkey.scan_iter(match=f"{namespace}:*")}
-            assert len(original_keys) == 5
+            assert len(original_keys) == len(paths) + 1
             for key in original_keys:
                 assert 86_390 <= await valkey.ttl(key) <= 86_400
 
             changed = {
                 catalog: {language: dict(bundle) for language, bundle in messages.items()}
-                for catalog, messages in CATALOGS.items()
+                for catalog, messages in BUNDLES.items()
             }
-            changed[CatalogEnum.WORKSPACE][LanguageEnum.EN]["app.siteName"] = "New workspace title"
-            monkeypatch.setattr("core.i18n.service.CATALOGS", changed)
-            monkeypatch.setattr("entrypoints.litestar.api.i18n.cache.CATALOGS", changed)
+            changed[BundleEnum.PERSONAL_WORKSPACE][LanguageEnum.EN]["workspace.title"] = (
+                "New workspace title"
+            )
+            monkeypatch.setattr("core.i18n.service.BUNDLES", changed)
+            monkeypatch.setattr("entrypoints.litestar.api.i18n.cache.BUNDLES", changed)
             async with AsyncTestClient(create_app_with_current_settings(monkeypatch)) as client:
-                response = await client.get("/api/i18n/personal-workspace/bundles/en")
-                assert response.json()["messages"]["app.siteName"] == "New workspace title"
+                response = await client.get("/api/i18n/bundles/personal-workspace/en")
+                assert response.json()["messages"]["workspace.title"] == "New workspace title"
             new_keys = {key async for key in valkey.scan_iter(match=f"{namespace}:*")}
             assert len(new_keys - original_keys) == 1
         finally:

@@ -36,8 +36,14 @@ ACCOUNT_MESSAGE_KEYS = {
 
 class TestI18nApi(ApiTestCase):
     def test_account_messages_exist_and_match_across_languages(self) -> None:
-        russian = self.api.get_i18n_bundle(language="ru").json()["messages"]
-        english = self.api.get_i18n_bundle(language="en").json()["messages"]
+        russian = {
+            **self.api.get_i18n_bundle(bundle="shared", language="ru").json()["messages"],
+            **self.api.get_i18n_bundle(bundle="account", language="ru").json()["messages"],
+        }
+        english = {
+            **self.api.get_i18n_bundle(bundle="shared", language="en").json()["messages"],
+            **self.api.get_i18n_bundle(bundle="account", language="en").json()["messages"],
+        }
 
         assert russian.keys() >= ACCOUNT_MESSAGE_KEYS
         assert english.keys() >= ACCOUNT_MESSAGE_KEYS
@@ -68,42 +74,52 @@ class TestI18nApi(ApiTestCase):
         }
 
     def test_get_russian_bundle(self) -> None:
-        response = self.api.get_i18n_bundle(language="ru")
+        response = self.api.get_i18n_bundle(bundle="admin-panel", language="ru")
 
         assert response.status_code == codes.OK, response.content
         body = response.json()
+        assert body["bundle"] == "admin-panel"
         assert body["language"] == "ru"
-        assert "shell.nav.about" not in body["messages"]
-        assert body["messages"]["shell.footer.email"] == "Эл. почта"
-        assert body["messages"]["shell.nav.adminPanel"] == "Админ-панель"
         assert body["messages"]["adminPanel.title"] == "Админ-панель"
-        assert body["messages"]["enum.publishStatus.Draft"] == "Черновик"
-        assert body["messages"]["enum.grade.JuniorPlus"] == "Junior+"
-        assert body["messages"]["auth.login.restrictedAccessWarning.title"] == (
-            "Пока только для владельца, администраторов и модераторов"
-        )
+
+    def test_shared_bundle_contains_global_account_feedback(self) -> None:
+        shared = self.api.get_i18n_bundle(bundle="shared", language="en").json()["messages"]
+        account = self.api.get_i18n_bundle(bundle="account", language="en").json()["messages"]
+
+        required = {
+            "account.settings.title",
+            "account.settings.saved",
+            "account.settings.saveFailed",
+            "account.settings.applyFailed",
+        }
+        assert required <= shared.keys()
+        assert required.isdisjoint(account.keys())
 
     def test_get_english_bundle(self) -> None:
-        response = self.api.get_i18n_bundle(language="en")
+        response = self.api.get_i18n_bundle(bundle="admin-panel", language="en")
 
         assert response.status_code == codes.OK, response.content
         body = response.json()
+        assert body["bundle"] == "admin-panel"
         assert body["language"] == "en"
-        assert "shell.nav.about" not in body["messages"]
-        assert body["messages"]["shell.footer.email"] == "Email"
-        assert body["messages"]["shell.nav.adminPanel"] == "Admin panel"
         assert body["messages"]["adminPanel.title"] == "Admin panel"
-        assert body["messages"]["enum.publishStatus.Draft"] == "Draft"
-        assert body["messages"]["enum.grade.JuniorPlus"] == "Junior+"
-        assert (
-            body["messages"]["auth.login.restrictedAccessWarning.title"]
-            == "Owner, admins, and moderators only for now"
-        )
 
     def test_unknown_bundle_language_is_rejected(self) -> None:
-        response = self.api.get_i18n_bundle(language="de")
+        response = self.api.get_i18n_bundle(bundle="shared", language="de")
 
         assert response.status_code == codes.BAD_REQUEST
+
+    def test_unknown_bundle_is_rejected(self) -> None:
+        response = self.api.get_i18n_bundle(bundle="missing", language="en")
+
+        assert response.status_code == codes.BAD_REQUEST
+
+    def test_legacy_bundle_paths_are_removed(self) -> None:
+        assert self.api.client.get("/api/i18n/bundles/en").status_code == codes.NOT_FOUND
+        assert (
+            self.api.client.get("/api/i18n/personal-workspace/bundles/en").status_code
+            == codes.NOT_FOUND
+        )
 
     @staticmethod
     def _placeholders(message: str) -> set[str]:

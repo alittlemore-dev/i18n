@@ -5,7 +5,7 @@ from litestar.stores.memory import MemoryStore
 from litestar.testing import TestClient
 from pydantic import ValidationError
 
-from core.i18n.enums import CatalogEnum, LanguageEnum
+from core.i18n.enums import BundleEnum, LanguageEnum
 from core.i18n.service import I18nService
 from infra.config.constants import constants
 from infra.config.settings import I18nSettings, settings
@@ -13,11 +13,11 @@ from main import create_app
 from tests.helpers.api import create_app_with_current_settings
 
 
-@pytest.mark.parametrize("catalog", list(CatalogEnum))
-def test_catalog_languages_keys_and_placeholders(catalog: CatalogEnum) -> None:
+@pytest.mark.parametrize("bundle", list(BundleEnum))
+def test_bundle_languages_keys_and_placeholders(bundle: BundleEnum) -> None:
     service = I18nService(LanguageEnum.RU)
-    russian = service.get_messages(catalog, LanguageEnum.RU)
-    english = service.get_messages(catalog, LanguageEnum.EN)
+    russian = service.get_messages(bundle, LanguageEnum.RU)
+    english = service.get_messages(bundle, LanguageEnum.EN)
     assert russian.keys() == english.keys()
     formatter = Formatter()
     for key in russian:
@@ -32,14 +32,23 @@ def test_catalog_languages_keys_and_placeholders(catalog: CatalogEnum) -> None:
         assert russian_fields == english_fields, key
 
 
-def test_returned_messages_do_not_mutate_catalog() -> None:
+def test_returned_messages_do_not_mutate_bundle() -> None:
     service = I18nService(LanguageEnum.RU)
-    returned = service.get_messages(CatalogEnum.WORKSPACE, LanguageEnum.EN)
-    returned["app.siteName"] = "Changed"
+    returned = service.get_messages(BundleEnum.PERSONAL_WORKSPACE, LanguageEnum.EN)
+    returned["workspace.title"] = "Changed"
     assert (
-        service.get_messages(CatalogEnum.WORKSPACE, LanguageEnum.EN)["app.siteName"]
-        == "Personal workspace"
+        service.get_messages(BundleEnum.PERSONAL_WORKSPACE, LanguageEnum.EN)["workspace.title"]
+        == "Workspace"
     )
+
+
+def test_bundle_message_keys_do_not_overlap() -> None:
+    service = I18nService(LanguageEnum.RU)
+    owners: dict[str, BundleEnum] = {}
+    for bundle in BundleEnum:
+        for key in service.get_messages(bundle, LanguageEnum.RU):
+            assert key not in owners, f"{key} exists in {owners.get(key)} and {bundle}"
+            owners[key] = bundle
 
 
 def test_default_language_setting(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -57,29 +66,25 @@ def test_bundle_cache_isolated_and_optional(monkeypatch: pytest.MonkeyPatch, ena
     monkeypatch.setattr(settings.app, "use_cache", enabled)
     app = create_app_with_current_settings(monkeypatch)
     app.stores.register(constants.valkey.store_name, MemoryStore(), allow_override=True)
-    calls: list[tuple[CatalogEnum, LanguageEnum]] = []
+    calls: list[tuple[BundleEnum, LanguageEnum]] = []
     original = I18nService.get_messages
 
-    def counted(self: I18nService, catalog: CatalogEnum, language: LanguageEnum) -> dict[str, str]:
-        calls.append((catalog, language))
-        return original(self, catalog, language)
+    def counted(self: I18nService, bundle: BundleEnum, language: LanguageEnum) -> dict[str, str]:
+        calls.append((bundle, language))
+        return original(self, bundle, language)
 
     monkeypatch.setattr(I18nService, "get_messages", counted)
     with TestClient(app) as client:
-        for prefix in ("", "/personal-workspace"):
+        for bundle in BundleEnum:
             for language in ("ru", "en"):
-                path = f"/api/i18n{prefix}/bundles/{language}"
+                path = f"/api/i18n/bundles/{bundle}/{language}"
                 first = client.get(path)
                 second = client.get(path + "?irrelevant=value")
                 assert first.status_code == second.status_code == 200
                 assert first.json() == second.json()
                 assert first.json()["language"] == language
-        assert (
-            client.get("/api/i18n/bundles/en").json()["messages"]["app.siteName"]
-            == "Competency Trainer"
+        assert client.get("/api/i18n/bundles/shared/en").json()["messages"]["app.siteName"] == (
+            "Competency Trainer"
         )
-        assert (
-            client.get("/api/i18n/personal-workspace/bundles/en").json()["messages"]["app.siteName"]
-            == "Personal workspace"
-        )
-    assert len(calls) == (4 if enabled else 10)
+    request_count = len(BundleEnum) * 2
+    assert len(calls) == (request_count if enabled else request_count * 2 + 1)

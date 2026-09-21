@@ -4,8 +4,6 @@ from tests.helpers.api import ApiTestCase
 
 
 class TestI18nApi(ApiTestCase):
-    bundle_prefix = "/api/i18n/personal-workspace"
-
     def test_lists_configured_languages(self) -> None:
         response = self.api.get_i18n_languages()
 
@@ -19,16 +17,17 @@ class TestI18nApi(ApiTestCase):
         }
 
     def test_returns_requested_language_bundle(self) -> None:
-        response = self.api.get_i18n_bundle(language="en")
+        response = self.api.get_i18n_bundle(bundle="personal-workspace", language="en")
 
         assert response.status_code == codes.OK, response.content
         body = response.json()
+        assert body["bundle"] == "personal-workspace"
         assert body["language"] == "en"
-        assert body["messages"]["auth.login.title"] == "Sign in"
         assert body["messages"]["workspace.title"] == "Workspace"
-        assert body["messages"]["enum.publishStatus.Draft"] == "Draft"
+        assert body["messages"]["workspaceDashboard.tools.summary"] == "Cache"
+        assert "dashboard.tools.summary" not in body["messages"]
 
     def test_rejects_unknown_bundle_language(self) -> None:
-        response = self.api.get_i18n_bundle(language="de")
+        response = self.api.get_i18n_bundle(bundle="personal-workspace", language="de")
 
         assert response.status_code == codes.BAD_REQUEST, response.content

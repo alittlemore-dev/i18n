@@ -26,19 +26,17 @@ Both use main:create_app. The container only supports the run action.
 - GET /api/i18n/healthcheck/ready: empty 200 after PING; empty 503 on connection failure.
 - GET /api/i18n/docs: OpenAPI UI. Operational health endpoints are omitted from the schema.
 - GET /api/i18n/languages: defaultLanguage and the ru/en language list.
-- GET /api/i18n/bundles/{language}: competency-trainer catalog.
-- GET /api/i18n/personal-workspace/bundles/{language}: personal-workspace catalog.
+- GET /api/i18n/bundles/{bundle}/{language}: one interface bundle in ru or en.
 
-Translation routes are public. Bundles contain language and messages; unsupported languages
-return 400. Catalogs stay separate, including conflicting keys. The frontend retains shared
-catalog precedence and maps workspace dashboard.* keys to workspaceDashboard.*.
-Legacy root operational routes return 404. The shared edge proxies the old
-/api/personal-workspace/i18n/languages and /bundles/{language} paths to this service.
+Translation routes are public. Bundle responses contain bundle, language and messages;
+unsupported bundle or language values return 400. Bundle keys are disjoint, reusable interface
+copy lives in `shared`, and Personal Workspace dashboard keys use the `workspaceDashboard.*`
+namespace directly. Retired bundle and Personal Workspace compatibility routes return 404.
 
 Health endpoints are never cached. APP_USE_CACHE registers a Litestar response store in Valkey
 DB 0, namespace I18N_LITESTAR. Translation responses are cached for 86400 seconds, with keys
-separated by path (catalog/language), configured default language and a SHA-256 fingerprint
-of both catalogs. Changing translations rotates the response-cache keys without flushing
+separated by path (bundle/language), configured default language and a SHA-256 fingerprint
+of every bundle. Changing translations rotates the response-cache keys without flushing
 another release's cache. With APP_USE_CACHE=false, handlers do not cache responses. Readiness still requires
 Valkey with caching disabled. Connections have bounded timeouts and close during shutdown.
 Sentry and request logs exclude request bodies, raw query values and credentials.
@@ -89,8 +87,8 @@ or deployment occurs when running the local acceptance checks.
 
 ## Catalog ownership
 
-Catalogs and translation lookup live in core.i18n; HTTP schemas and handlers adapt that core
-through Dishka. Static catalog consistency is checked by tests, not on application requests. Both catalogs were copied from their original applications without text changes.
-The original backends are retained for rollback. Catalog tests cover matching ru/en keys,
-placeholders and required enum labels without importing application business modules.
+Bundles and translation lookup live in core.i18n; HTTP schemas and handlers adapt that core
+through Dishka. Static consistency is checked by tests, not on application requests. Catalog tests
+cover matching ru/en keys, disjoint ownership, placeholders and required enum labels without
+importing application business modules.
 Shared local and production integration is maintained by the sibling infra repository.

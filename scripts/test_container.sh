@@ -22,11 +22,22 @@ import json
 import os
 import time
 import urllib.request
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 assert os.getuid() == 10001
+bundles = (
+    "shared",
+    "how-this-site-is-built",
+    "articles",
+    "competency-matrix",
+    "updates",
+    "sitemap",
+    "account",
+    "admin-panel",
+    "personal-workspace",
+)
 for attempt in range(60):
     try:
-        for path in ("healthcheck", "healthcheck/ready", "docs", "languages", "bundles/ru", "bundles/en", "personal-workspace/bundles/ru", "personal-workspace/bundles/en"):
+        for path in ("healthcheck", "healthcheck/ready", "docs", "languages"):
             with urllib.request.urlopen("http://127.0.0.1:8080/api/i18n/" + path, timeout=3) as response:
                 assert response.status == 200
         break
@@ -34,9 +45,22 @@ for attempt in range(60):
         time.sleep(1)
 else:
     raise SystemExit("Container did not become ready")
-for prefix, title in (("", "Competency Trainer"), ("personal-workspace/", "Personal workspace")):
-    with urllib.request.urlopen("http://127.0.0.1:8080/api/i18n/" + prefix + "bundles/en") as response:
-        assert json.load(response)["messages"]["app.siteName"] == title
+for bundle in bundles:
+    for language in ("ru", "en"):
+        with urllib.request.urlopen(
+            f"http://127.0.0.1:8080/api/i18n/bundles/{bundle}/{language}"
+        ) as response:
+            payload = json.load(response)
+            assert payload["bundle"] == bundle
+            assert payload["language"] == language
+            assert payload["messages"]
+for retired_path in ("bundles/ru", "bundles/en", "personal-workspace/bundles/ru"):
+    try:
+        urllib.request.urlopen("http://127.0.0.1:8080/api/i18n/" + retired_path)
+    except HTTPError as error:
+        assert error.code == 404
+    else:
+        raise SystemExit(f"Retired route must return 404: {retired_path}")
 print("Container health, readiness, docs, catalogs and non-root runtime passed")
 '
 docker stop --time 5 "$cache_container" >/dev/null

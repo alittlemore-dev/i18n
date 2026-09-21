@@ -10,6 +10,7 @@ from core.i18n.enums import CatalogEnum, LanguageEnum
 from infra.config.constants import constants
 from infra.config.settings import settings
 from main import create_app
+from tests.helpers.api import create_app_with_current_settings
 
 
 async def test_real_valkey_readiness_and_response_cache(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -71,7 +72,7 @@ async def test_catalog_responses_use_versioned_isolated_valkey_cache(
     ]
     async with Valkey.from_url(settings.valkey.url) as valkey:
         try:
-            async with AsyncTestClient(create_app()) as client:
+            async with AsyncTestClient(create_app_with_current_settings(monkeypatch)) as client:
                 for path in paths:
                     first = await client.get(path)
                     second = await client.get(path)
@@ -89,8 +90,8 @@ async def test_catalog_responses_use_versioned_isolated_valkey_cache(
             }
             changed[CatalogEnum.WORKSPACE][LanguageEnum.EN]["app.siteName"] = "New workspace title"
             monkeypatch.setattr("core.i18n.service.CATALOGS", changed)
-            monkeypatch.setattr("entrypoints.litestar.api.i18n.endpoints.CATALOGS", changed)
-            async with AsyncTestClient(create_app()) as client:
+            monkeypatch.setattr("entrypoints.litestar.api.i18n.cache.CATALOGS", changed)
+            async with AsyncTestClient(create_app_with_current_settings(monkeypatch)) as client:
                 response = await client.get("/api/i18n/personal-workspace/bundles/en")
                 assert response.json()["messages"]["app.siteName"] == "New workspace title"
             new_keys = {key async for key in valkey.scan_iter(match=f"{namespace}:*")}

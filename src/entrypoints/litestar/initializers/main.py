@@ -12,7 +12,7 @@ from litestar.stores.base import Store
 from litestar.stores.valkey import ValkeyStore
 from valkey.asyncio import Valkey
 
-from entrypoints.litestar.api.routers import create_api_router
+from entrypoints.litestar.api.routers import api_router
 from entrypoints.litestar.exception_handlers import get_litestar_exception_handlers
 from entrypoints.litestar.lifespan.main import app_lifespan
 from entrypoints.litestar.middlewares.logging import RequestIdLoggingMiddleware
@@ -39,7 +39,7 @@ def create_litestar_app(*, container: AsyncContainer) -> Litestar:
         else {}
     )
     app = Litestar(
-        route_handlers=[create_api_router()],
+        route_handlers=[api_router],
         debug=settings.app.debug,
         lifespan=[app_lifespan],
         exception_handlers=get_litestar_exception_handlers(),

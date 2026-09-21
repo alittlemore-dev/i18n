@@ -1,10 +1,23 @@
 from collections.abc import Iterator
+from importlib import reload
 
 import pytest
 from httpx import Response
+from litestar import Litestar
 from litestar.testing import TestClient
 
+from entrypoints.litestar.api import routers
+from entrypoints.litestar.api.i18n import endpoints
+from entrypoints.litestar.initializers import main as initializer
 from main import create_app
+
+
+def create_app_with_current_settings(monkeypatch: pytest.MonkeyPatch) -> Litestar:
+    # Static route decorators read configuration at import time, as on process startup.
+    reload(endpoints)
+    reload(routers)
+    monkeypatch.setattr(initializer, "api_router", routers.api_router)
+    return create_app()
 
 
 class I18nTestApi:

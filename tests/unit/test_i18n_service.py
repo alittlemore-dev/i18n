@@ -10,6 +10,7 @@ from core.i18n.service import I18nService
 from infra.config.constants import constants
 from infra.config.settings import I18nSettings, settings
 from main import create_app
+from tests.helpers.api import create_app_with_current_settings
 
 
 @pytest.mark.parametrize("catalog", list(CatalogEnum))
@@ -54,7 +55,7 @@ def test_default_language_setting(monkeypatch: pytest.MonkeyPatch) -> None:
 @pytest.mark.parametrize("enabled", [True, False])
 def test_bundle_cache_isolated_and_optional(monkeypatch: pytest.MonkeyPatch, enabled: bool) -> None:
     monkeypatch.setattr(settings.app, "use_cache", enabled)
-    app = create_app()
+    app = create_app_with_current_settings(monkeypatch)
     app.stores.register(constants.valkey.store_name, MemoryStore(), allow_override=True)
     calls: list[tuple[CatalogEnum, LanguageEnum]] = []
     original = I18nService.get_messages

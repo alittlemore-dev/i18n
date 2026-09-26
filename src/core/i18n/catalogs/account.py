@@ -19,6 +19,13 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
             "Бот пока не настроен на сервере. Подключение станет доступно после настройки бота."
         ),
         "account.telegram.enabled": "Разрешить подключение Telegram-аккаунтов",
+        "account.telegram.notify": "Отправлять уведомления через бота",
+        "account.telegram.notificationSettings": "Настройки уведомлений",
+        "account.telegram.notifyBirthday": "Дни рождения",
+        "account.telegram.notifyMemorableDate": "Памятные даты",
+        "account.telegram.notificationLanguage": "Язык уведомлений",
+        "account.telegram.notificationTimeZone": "Часовой пояс участника (отправка в 09:00)",
+        "account.telegram.saveNotifications": "Сохранить уведомления",
         "account.telegram.inviteHint": (
             "Создайте одноразовую ссылку и отправьте её участнику. "
             "Подключение потребует вашего подтверждения."
@@ -97,6 +104,13 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
             "Connections will be available after setup."
         ),
         "account.telegram.enabled": "Allow Telegram account connections",
+        "account.telegram.notify": "Send notifications through the bot",
+        "account.telegram.notificationSettings": "Notification settings",
+        "account.telegram.notifyBirthday": "Birthdays",
+        "account.telegram.notifyMemorableDate": "Memorable dates",
+        "account.telegram.notificationLanguage": "Notification language",
+        "account.telegram.notificationTimeZone": "Participant time zone (send at 09:00)",
+        "account.telegram.saveNotifications": "Save notifications",
         "account.telegram.inviteHint": (
             "Create a one-time link and share it with a participant. "
             "You must approve the connection."

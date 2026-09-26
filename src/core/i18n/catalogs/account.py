@@ -13,6 +13,46 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "account.profile.title": "Профиль",
         "account.settings.general": "Общие",
         "account.settings.appearance": "Внешний вид",
+        "account.settings.telegram": "Telegram",
+        "account.telegram.title": "Telegram-бот",
+        "account.telegram.unavailable": (
+            "Бот пока не настроен на сервере. Подключение станет доступно после настройки бота."
+        ),
+        "account.telegram.enabled": "Разрешить подключение Telegram-аккаунтов",
+        "account.telegram.inviteHint": (
+            "Создайте одноразовую ссылку и отправьте её участнику. "
+            "Подключение потребует вашего подтверждения."
+        ),
+        "account.telegram.label": "Имя участника",
+        "account.telegram.labelRequired": "Введите имя участника (до 100 символов).",
+        "account.telegram.createInvite": "Создать новую ссылку",
+        "account.telegram.linkOnce": "Сохраните ссылку сейчас: позже она не будет показана снова.",
+        "account.telegram.expires": "Действует до",
+        "account.telegram.cancelInvite": "Отменить ссылку",
+        "account.telegram.connections": "Telegram-аккаунты",
+        "account.telegram.noConnections": "Подключённых аккаунтов и запросов пока нет.",
+        "account.telegram.state": "Статус",
+        "account.telegram.state.pending": "Ожидает подтверждения",
+        "account.telegram.state.active": "Подключён",
+        "account.telegram.state.revoked": "Отключён",
+        "account.telegram.state.blocked": "Заблокирован",
+        "account.telegram.approve": "Подтвердить",
+        "account.telegram.reject": "Отклонить",
+        "account.telegram.revoke": "Отключить",
+        "account.telegram.block": "Заблокировать",
+        "account.telegram.unblock": "Снять блокировку",
+        "account.telegram.rename": "Переименовать",
+        "account.telegram.saveLabel": "Сохранить имя",
+        "account.telegram.loadFailed": "Не удалось загрузить Telegram-настройки.",
+        "account.telegram.actionFailed": "Не удалось выполнить действие. Повторите попытку.",
+        "account.telegram.confirmCancel": "Отменить эту ссылку?",
+        "account.telegram.confirm.revoke": "Отключить этого участника?",
+        "account.telegram.confirm.block": (
+            "Заблокировать Telegram-аккаунт? Он не сможет подключиться снова."
+        ),
+        "account.telegram.confirm.unblock": (
+            "Снять блокировку? Для повторного подключения понадобится новая ссылка."
+        ),
         "account.settings.theme": "Тема",
         "account.settings.autosave": "Изменения сохраняются автоматически.",
         "account.settings.saving": "Сохранение…",
@@ -50,6 +90,47 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "account.profile.title": "Profile",
         "account.settings.general": "General",
         "account.settings.appearance": "Appearance",
+        "account.settings.telegram": "Telegram",
+        "account.telegram.title": "Telegram bot",
+        "account.telegram.unavailable": (
+            "The bot is not configured on the server yet. "
+            "Connections will be available after setup."
+        ),
+        "account.telegram.enabled": "Allow Telegram account connections",
+        "account.telegram.inviteHint": (
+            "Create a one-time link and share it with a participant. "
+            "You must approve the connection."
+        ),
+        "account.telegram.label": "Participant name",
+        "account.telegram.labelRequired": "Enter a participant name (up to 100 characters).",
+        "account.telegram.createInvite": "Create a new link",
+        "account.telegram.linkOnce": "Save this link now; it will not be shown again.",
+        "account.telegram.expires": "Expires",
+        "account.telegram.cancelInvite": "Cancel link",
+        "account.telegram.connections": "Telegram accounts",
+        "account.telegram.noConnections": "No connected accounts or requests yet.",
+        "account.telegram.state": "Status",
+        "account.telegram.state.pending": "Awaiting approval",
+        "account.telegram.state.active": "Connected",
+        "account.telegram.state.revoked": "Disconnected",
+        "account.telegram.state.blocked": "Blocked",
+        "account.telegram.approve": "Approve",
+        "account.telegram.reject": "Reject",
+        "account.telegram.revoke": "Disconnect",
+        "account.telegram.block": "Block",
+        "account.telegram.unblock": "Unblock",
+        "account.telegram.rename": "Rename",
+        "account.telegram.saveLabel": "Save name",
+        "account.telegram.loadFailed": "Could not load Telegram settings.",
+        "account.telegram.actionFailed": "The action failed. Try again.",
+        "account.telegram.confirmCancel": "Cancel this link?",
+        "account.telegram.confirm.revoke": "Disconnect this participant?",
+        "account.telegram.confirm.block": (
+            "Block this Telegram account? It will not be able to reconnect."
+        ),
+        "account.telegram.confirm.unblock": (
+            "Unblock this account? A new link will be needed to reconnect."
+        ),
         "account.settings.theme": "Theme",
         "account.settings.autosave": "Changes are saved automatically.",
         "account.settings.saving": "Saving…",

@@ -24,7 +24,6 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "account.telegram.notifyBirthday": "Дни рождения",
         "account.telegram.notifyMemorableDate": "Памятные даты",
         "account.telegram.notificationLanguage": "Язык уведомлений",
-        "account.telegram.notificationTimeZone": "Часовой пояс участника (отправка в 09:00)",
         "account.telegram.saveNotifications": "Сохранить уведомления",
         "account.telegram.inviteHint": (
             "Создайте одноразовую ссылку и отправьте её участнику. "
@@ -61,6 +60,13 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
             "Снять блокировку? Для повторного подключения понадобится новая ссылка."
         ),
         "account.settings.theme": "Тема",
+        "account.settings.timeZone": "Часовой пояс",
+        "account.settings.timeZoneDevice": "Использовать часовой пояс устройства",
+        "account.settings.timeZoneHint": (
+            "Определяет время в календаре, часовой пояс новых и повторяющихся событий "
+            "и будущих напоминаний Telegram. Разовые события сохраняют момент времени, "
+            "события на весь день — дату."
+        ),
         "account.settings.autosave": "Изменения сохраняются автоматически.",
         "account.settings.saving": "Сохранение…",
         "account.settings.loadFailed": "Не удалось загрузить настройки.",
@@ -109,7 +115,6 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "account.telegram.notifyBirthday": "Birthdays",
         "account.telegram.notifyMemorableDate": "Memorable dates",
         "account.telegram.notificationLanguage": "Notification language",
-        "account.telegram.notificationTimeZone": "Participant time zone (send at 09:00)",
         "account.telegram.saveNotifications": "Save notifications",
         "account.telegram.inviteHint": (
             "Create a one-time link and share it with a participant. "
@@ -146,6 +151,13 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
             "Unblock this account? A new link will be needed to reconnect."
         ),
         "account.settings.theme": "Theme",
+        "account.settings.timeZone": "Time zone",
+        "account.settings.timeZoneDevice": "Use device time zone",
+        "account.settings.timeZoneHint": (
+            "Controls calendar display, the time zone for new and recurring events, "
+            "and future Telegram reminders. One-off events keep their instant, "
+            "and all-day events keep their date."
+        ),
         "account.settings.autosave": "Changes are saved automatically.",
         "account.settings.saving": "Saving…",
         "account.settings.loadFailed": "Could not load settings.",

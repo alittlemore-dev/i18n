@@ -42,6 +42,102 @@ class TestI18nCatalog:
 
         assert english_keys == russian_keys
 
+    def test_dashboard_information_events_and_calendar_copy_is_available(self) -> None:
+        important_info_keys = {
+            "title",
+            "placeholder",
+            "add",
+            "edit",
+            "delete",
+            "moveUp",
+            "moveDown",
+            "save",
+            "cancel",
+            "loadError",
+            "saveError",
+            "deleteError",
+            "orderError",
+            "added",
+            "updated",
+            "deleted",
+            "reordered",
+            "tooLong",
+        }
+        event_keys = {
+            "title",
+            "search",
+            "empty",
+            "create",
+            "edit",
+            "delete",
+            "deleteConfirm",
+            "name",
+            "description",
+            "allDay",
+            "start",
+            "startTime",
+            "end",
+            "endTime",
+            "range.selectStart",
+            "range.selectEnd",
+            "range.separator",
+            "range.preview",
+            "range.hour",
+            "range.minute",
+            "range.timeFormatHint",
+            "range.now",
+            "recurrence",
+            "untilDate",
+            "save",
+            "cancel",
+            "required",
+            "titleTooLong",
+            "descriptionTooLong",
+            "invalidRange",
+            "loadError",
+            "saveError",
+            "deleteError",
+            "saved",
+            "deleted",
+            "frequency.none",
+            "frequency.daily",
+            "frequency.weekly",
+            "frequency.monthly",
+            "frequency.yearly",
+        }
+        calendar_keys = {
+            "title",
+            "previous",
+            "next",
+            "today",
+            "chooseDay",
+            "viewDay",
+            "noDayThisYear",
+            "view.month",
+            "view.day",
+            "view.week",
+            "view.year",
+            "allDay",
+            "create",
+            "dayDetails",
+            "eventDetails",
+            "legacyDetails",
+            "unplaced",
+            "loadError",
+            "timeZone",
+            "more",
+        }
+        required_keys = (
+            {f"workspaceDashboard.importantInfo.{key}" for key in important_info_keys}
+            | {f"workspaceEvents.{key}" for key in event_keys}
+            | {f"workspaceDashboard.calendar.{key}" for key in calendar_keys}
+        )
+
+        for language in LanguageEnum:
+            messages = get_i18n_messages(language=language)
+            assert required_keys <= messages.keys()
+            assert all(messages[key].strip() for key in required_keys)
+
     def test_publish_status_values_have_labels_in_every_language(self) -> None:
         required_keys = {
             "enum.publishStatus.Draft",

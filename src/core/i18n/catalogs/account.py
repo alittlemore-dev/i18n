@@ -18,11 +18,20 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "account.telegram.unavailable": (
             "Бот пока не настроен на сервере. Подключение станет доступно после настройки бота."
         ),
+        "account.telegram.connecting": (
+            "Подключаемся к Telegram. Настройки станут доступны после подключения."
+        ),
+        "account.telegram.failed": (
+            "Не удалось подключиться к Telegram. Настройки временно недоступны. "
+            "Подключение будет проверено повторно автоматически."
+        ),
         "account.telegram.enabled": "Разрешить подключение Telegram-аккаунтов",
         "account.telegram.notify": "Отправлять уведомления через бота",
         "account.telegram.notificationSettings": "Настройки уведомлений",
         "account.telegram.notifyBirthday": "Дни рождения",
         "account.telegram.notifyMemorableDate": "Памятные даты",
+        "account.telegram.notifyFinanceTransaction": "Новые финансовые операции других участников",
+        "account.telegram.notifyFinanceLimit": "Превышение лимитов расходов",
         "account.telegram.notificationLanguage": "Язык уведомлений",
         "account.telegram.saveNotifications": "Сохранить уведомления",
         "account.telegram.inviteHint": (
@@ -109,11 +118,22 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
             "The bot is not configured on the server yet. "
             "Connections will be available after setup."
         ),
+        "account.telegram.connecting": (
+            "Connecting to Telegram. Settings will be available once connected."
+        ),
+        "account.telegram.failed": (
+            "Could not connect to Telegram. Settings are temporarily unavailable. "
+            "The connection will be checked again automatically."
+        ),
         "account.telegram.enabled": "Allow Telegram account connections",
         "account.telegram.notify": "Send notifications through the bot",
         "account.telegram.notificationSettings": "Notification settings",
         "account.telegram.notifyBirthday": "Birthdays",
         "account.telegram.notifyMemorableDate": "Memorable dates",
+        "account.telegram.notifyFinanceTransaction": (
+            "New financial transactions by other participants"
+        ),
+        "account.telegram.notifyFinanceLimit": "Expense limit overruns",
         "account.telegram.notificationLanguage": "Notification language",
         "account.telegram.saveNotifications": "Save notifications",
         "account.telegram.inviteHint": (

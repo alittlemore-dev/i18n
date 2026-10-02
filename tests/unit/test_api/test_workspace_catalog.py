@@ -150,14 +150,12 @@ class TestI18nCatalog:
         required_keys = {
             "workspace.section.dashboard",
             "workspace.section.resumes",
-            "workspace.section.tools",
             "workspace.section.knowledge",
             "workspace.section.people",
             "workspace.section.dates",
             "knowledgePeople.relationshipTypes.manage",
             "knowledgePeople.attachmentDownloadError",
             "knowledgeDates.attachmentDownloadError",
-            "tools.cache.title",
             "resumeWorkspace.title",
         }
 

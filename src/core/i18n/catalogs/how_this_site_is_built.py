@@ -30,7 +30,9 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "логикой, HTTP-слоем, инфраструктурой и хранением. Статьи, "
         "матрица компетенций, управление командой и служебные "
         "инструменты сохраняют собственные контракты, а общие "
-        "механизмы остаются ниже транспортной границы.",
+        "механизмы остаются ниже транспортной границы. Общий Swagger на /api/docs "
+        "и OpenAPI на /api/openapi.json объединяют внешние API всех сервисов, "
+        "включая пользовательские методы Personal Workspace с авторизацией.",
         "siteBuild.architecture.frontendTitle": "Frontend",
         "siteBuild.architecture.frontendBody": "Angular hybrid SSR/CSR и backend-driven i18n дают SEO для "
         "публичных страниц, а read-only матрица и статьи отделены "
@@ -113,7 +115,9 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "logic, HTTP, infrastructure, and storage. Articles, the "
         "competency matrix, team administration, and operational "
         "tools keep their own contracts, while shared mechanisms "
-        "stay below the transport boundary.",
+        "stay below the transport boundary. Shared Swagger at /api/docs and "
+        "OpenAPI at /api/openapi.json combine the external APIs of all services, "
+        "including authenticated Personal Workspace operations.",
         "siteBuild.architecture.frontendTitle": "Frontend",
         "siteBuild.architecture.frontendBody": "Angular hybrid SSR/CSR and backend-driven i18n provide "
         "SEO for public pages, while read-only matrix and article "

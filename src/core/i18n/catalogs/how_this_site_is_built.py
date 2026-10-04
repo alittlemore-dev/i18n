@@ -51,18 +51,11 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "самовосстанавливается после устойчивого отказа локального "
         "liveness endpoint и использует restart policy для "
         "перезапуска Docker или VPS.",
-        "siteBuild.architecture.agentTitle": "Безопасный AI-доступ",
-        "siteBuild.architecture.agentBody": "Ограниченный Agent REST-контур смонтирован в основном "
-        "Litestar-приложении без отдельного процесса и Unix-сокета. "
-        "Приватную границу сохраняет отдельный WireGuard-bound nginx "
-        "mTLS-listener с точным allowlist; публичный listener "
-        "возвращает 404 для внутреннего пути и удаляет поддельный "
-        "certificate header. Локальный stdio MCP-мост открывает "
-        "ограниченный набор Draft-only операций без publish, generic "
-        "CRUD, SQL, shell или URL fetch. Упрощение осознанно "
-        "оставляет общими с backend процесс, роль БД, секреты и "
-        "доступность: изоляция private application network и доверие "
-        "к nginx остаются частью boundary.",
+        "siteBuild.architecture.apiAccessTitle": "Персональный доступ к API",
+        "siteBuild.architecture.apiAccessBody": "Именованные персональные токены дают скриптам и AI-агентам "
+        "доступ к обычным API от имени пользователя. Каждый токен ограничен выбранными операциями, "
+        "сроком действия и текущей ролью аккаунта; его можно независимо отозвать. Для создания, "
+        "просмотра и копирования нужен пароль. Документация API описывает доступные операции.",
         "siteBuild.decisions.title": "Инженерные решения",
         "siteBuild.decision.cleanArchitecture": "Clean Architecture: доменная логика не зависит от "
         "Litestar, SQLAlchemy или внешних сервисов.",
@@ -135,18 +128,11 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "retention period and retries failed operations. The edge "
         "nginx self-recovers after a sustained local liveness failure "
         "and uses a restart policy for Docker daemon or VPS restarts.",
-        "siteBuild.architecture.agentTitle": "Safe AI access",
-        "siteBuild.architecture.agentBody": "A bounded Agent REST surface is mounted in the main Litestar "
-        "application without a separate process or Unix socket. A "
-        "dedicated WireGuard-bound nginx mTLS listener preserves the "
-        "private boundary with an exact allowlist; the public "
-        "listener returns 404 for the internal path and strips forged "
-        "certificate headers. A local stdio MCP bridge exposes an "
-        "allowlisted Draft-only authoring surface with no publish, "
-        "generic CRUD, SQL, shell, or URL fetch. The simplification "
-        "intentionally shares the backend process, DB role, secrets, "
-        "and availability: private application-network isolation and "
-        "trust in nginx remain part of the boundary.",
+        "siteBuild.architecture.apiAccessTitle": "Personal API access",
+        "siteBuild.architecture.apiAccessBody": "Named personal tokens let scripts and AI agents use the "
+        "regular APIs on a user's behalf. Each token is bounded by selected operations, expiration and "
+        "the account's current role, and can be revoked independently. Creating, showing and copying "
+        "a token requires a password. API documentation describes the available operations.",
         "siteBuild.decisions.title": "Engineering decisions",
         "siteBuild.decision.cleanArchitecture": "Clean Architecture keeps domain logic independent from "
         "Litestar, SQLAlchemy, and external services.",

@@ -7,33 +7,33 @@ requires-python = "==3.14.*,<4.0"
 readme = ".github/README.md"
 license = { text = "MIT" }
 dependencies = [
-    "granian>=2.8.1",
+    "granian>=2.8.4",
     "pydantic-settings>=2.15.0",
     "verbose-http-exceptions[litestar]>=3.0.0",
     "structlog>=26.1.0",
     "litestar[pydantic,valkey]>=2.24.0",
     "ecs-logging>=2.3.0",
-    "sentry-sdk[litestar]>=2.68.0",
+    "sentry-sdk[litestar]>=2.71.0",
     "dishka>=1.10.1",
 ]
 
 [dependency-groups]
 dev = [
-    "granian[reload]>=2.8.1",
+    "granian[reload]>=2.8.4",
     "bandit>=1.9.4",
-    "coverage>=7.15.4",
+    "coverage>=7.16.2",
     "httpx>=0.28.1",
-    "mypy>=2.3.1",
+    "mypy>=2.4.0",
     "pip-audit>=2.10.1",
     "pytest==9.1.1",
     "pytest-asyncio>=1.4.0",
     "pytest-cov>=7.1.0",
     "pytest-xdist>=3.8.0",
-    "ruff>=0.16.3",
+    "ruff>=0.16.10",
     "vulture>=2.16",
 ]
 local = [
-    "ipython>=9.16.1",
+    "ipython>=9.17.1",
     "pre-commit>=4.6.2",
 ]
 

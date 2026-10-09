@@ -9,6 +9,8 @@ LanguageMessages = Mapping[str, str]
 MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
     LanguageEnum.RU: {
         "adminPanel.title": "Админ-панель",
+        "adminEditor.settings": "Размещение и параметры",
+        "adminEditor.content": "Содержимое",
         "adminPanel.header.backToHome": "На главную",
         "adminPanel.sidePanel.open": "Открыть разделы",
         "adminPanel.sidePanel.close": "Скрыть разделы",
@@ -671,6 +673,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
     },
     LanguageEnum.EN: {
         "adminPanel.title": "Admin panel",
+        "adminEditor.settings": "Placement and settings",
+        "adminEditor.content": "Content",
         "adminPanel.header.backToHome": "Home",
         "adminPanel.sidePanel.open": "Open sections",
         "adminPanel.sidePanel.close": "Hide sections",

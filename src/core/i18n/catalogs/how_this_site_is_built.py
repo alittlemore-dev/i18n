@@ -62,9 +62,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "siteBuild.decision.localizedContent": "RU/EN локализация разделена на UI-каталог и контентные "
         "поля, чтобы не смешивать интерфейс со статьями и "
         "матрицей.",
-        "siteBuild.decision.privacyAnalytics": "Privacy-safe аналитика считает просмотры и реакции без "
-        "cookies, raw IP, user-agent или сторонних "
-        "идентификаторов.",
+        "siteBuild.decision.privacyAnalytics": "Анонимная аналитика показывает динамику чтения статей, вопросов матрицы и посещений сайта. Суточные признаки браузера меняются каждый день; IP, аккаунты и полные URL переходов не сохраняются.",
         "siteBuild.decision.deployManifest": "Деплой оформлен как управляемый release process с ручным "
         "запуском: runtime-конфигурация собирается из manifest, CI "
         "quality gates отделены от deploy workflow, ручное "
@@ -139,9 +137,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "siteBuild.decision.localizedContent": "RU/EN localization is split between the UI catalog and "
         "content fields, so interface text is not mixed with "
         "articles and matrix content.",
-        "siteBuild.decision.privacyAnalytics": "Privacy-safe analytics count views and reactions without "
-        "cookies, raw IPs, user-agent strings, or third-party "
-        "identifiers.",
+        "siteBuild.decision.privacyAnalytics": "Anonymous analytics show trends in article and matrix reading and public site visits. Browser identifiers rotate daily; IPs, accounts and full referrer URLs are not stored.",
         "siteBuild.decision.deployManifest": "Deployment is treated as a controlled release process with "
         "a manual trigger: runtime configuration is rendered from a "
         "manifest, CI quality gates are decoupled from the deploy "

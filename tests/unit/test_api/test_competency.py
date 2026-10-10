@@ -1,5 +1,6 @@
 from string import Formatter
 
+import pytest
 from httpx import codes
 
 from tests.helpers.api import ApiTestCase
@@ -97,6 +98,12 @@ class TestI18nApi(ApiTestCase):
         }
         assert required <= shared.keys()
         assert required.isdisjoint(account.keys())
+
+    @pytest.mark.parametrize("language", ["ru", "en"])
+    def test_shared_bundle_contains_shell_service_identity(self, language: str) -> None:
+        messages = self.api.get_i18n_bundle(bundle="shared", language=language).json()["messages"]
+        for service in ("site", "workspace", "articles", "matrix", "admin"):
+            assert messages[f"shell.services.{service}"]
 
     def test_get_english_bundle(self) -> None:
         response = self.api.get_i18n_bundle(bundle="admin-panel", language="en")

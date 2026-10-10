@@ -8,6 +8,15 @@ LanguageMessages = Mapping[str, str]
 
 MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
     LanguageEnum.RU: {
+        "shared.navigation.collapse": "Свернуть разделы",
+        "shared.navigation.expand": "Открыть разделы",
+        "shared.navigation.sections": "Разделы",
+        "shared.navigation.pin": "Закрепить навигацию",
+        "shared.filters.title": "Фильтры",
+        "shared.filters.applied": "Применённые фильтры",
+        "shared.filters.remove": "Убрать фильтр",
+        "shared.filters.tag": "Тег",
+        "shared.filters.noResults": "Нет совпадений. Измените или сбросьте фильтры.",
         "app.siteName": "Мой сайт",
         "shell.nav.matrix": "Матрица компетенций",
         "shell.nav.articles": "Статьи",
@@ -15,6 +24,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "shell.nav.toggleNavigation": "Открыть навигацию",
         "shell.navigation": "Навигация по сайту",
         "shell.services.title": "Сервисы",
+        "shell.services.site": "alittlemore.dev",
         "shell.services.workspace": "Личное рабочее пространство",
         "shell.services.matrix": "Матрица компетенций",
         "shell.services.articles": "Статьи",
@@ -225,6 +235,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "shared.datePicker.invalidDate": "Введите корректную дату в формате ДД.ММ.ГГГГ.",
         "shared.datePicker.requiredDate": "Укажите дату.",
         "shared.datePicker.unavailableDate": "Эта дата недоступна.",
+        "shared.miniCalendar.keyboardHelp": "Используйте стрелки для выбора дня, Page Up и Page Down "
+        "для смены месяца. Enter или пробел применяют выбор сразу.",
         "shared.datePicker.keyboardHelp": "Используйте стрелки для выбора дня, Page Up и Page Down для "
         "смены месяца. Выбор изменяет черновик; нажмите «Готово», чтобы "
         "применить его. Escape или «Отмена» отменяют изменения.",
@@ -273,6 +285,15 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "account.settings.title": "Настройки",
     },
     LanguageEnum.EN: {
+        "shared.navigation.collapse": "Collapse sections",
+        "shared.navigation.expand": "Open sections",
+        "shared.navigation.sections": "Sections",
+        "shared.navigation.pin": "Pin navigation",
+        "shared.filters.title": "Filters",
+        "shared.filters.applied": "Applied filters",
+        "shared.filters.remove": "Remove filter",
+        "shared.filters.tag": "Tag",
+        "shared.filters.noResults": "No matches. Change or reset the filters.",
         "app.siteName": "Competency Trainer",
         "shell.nav.matrix": "Competency matrix",
         "shell.nav.articles": "Articles",
@@ -280,6 +301,7 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "shell.nav.toggleNavigation": "Toggle navigation",
         "shell.navigation": "Site navigation",
         "shell.services.title": "Services",
+        "shell.services.site": "alittlemore.dev",
         "shell.services.workspace": "Personal workspace",
         "shell.services.matrix": "Competency matrix",
         "shell.services.articles": "Articles",
@@ -489,6 +511,8 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "shared.datePicker.invalidDate": "Enter a valid date in MM/DD/YYYY format.",
         "shared.datePicker.requiredDate": "Enter a date.",
         "shared.datePicker.unavailableDate": "This date is unavailable.",
+        "shared.miniCalendar.keyboardHelp": "Use arrows to move between days, Page Up or Page Down "
+        "to change month, and Enter or Space to select the focused date.",
         "shared.datePicker.keyboardHelp": "Use arrow keys to choose a day and Page Up or Page Down to "
         "change month. A selection updates the draft; press Done to "
         "apply it. Escape or Cancel discards the changes.",

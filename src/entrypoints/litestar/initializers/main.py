@@ -69,7 +69,16 @@ def create_litestar_app(*, container: AsyncContainer) -> Litestar:
             ),
         ],
         openapi_config=OpenAPIConfig(
-            title="i18n",
+            title="Interface localization API",
+            description=(
+                "Public language discovery and localized UI message catalogs. No authentication "
+                "or pagination is required. JSON response fields use camelCase; message keys "
+                "inside messages are returned verbatim. Errors use code, type, message, location "
+                "and attr, plus optional recursive nested_errors for multiple validation failures. "
+                "Error keys use snake_case; invalid path values return HTTP 400, not 422. "
+                "Error messages are human-readable and may change; "
+                "use code and type to classify failures."
+            ),
             version="1.0.0",
             path="/api/i18n/docs",
             render_plugins=[SwaggerRenderPlugin()],

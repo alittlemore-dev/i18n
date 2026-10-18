@@ -16,6 +16,13 @@ Pydantic Settings, Valkey, structlog/ECS and Sentry.
 - Do not change Git state (stage, commit, push, branch, reset or checkout) without explicit request.
 - Keep task plans in the conversation; do not create workflow artifacts solely for a skill.
 
+## HTTP and Schemas
+
+- Keep OpenAPI synchronized with HTTP contract changes. Document operation intent, authorization,
+  required and nullable inputs, constraints, pagination, actual MIME types, applicable errors, and
+  realistic schema-valid examples. Verify generated schemas and relevant HTTP behavior through
+  Make-backed checks.
+
 ## Development
 
 - Use pyproject.toml as the source of lint, formatting and typing configuration.

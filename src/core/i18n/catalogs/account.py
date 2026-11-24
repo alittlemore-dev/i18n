@@ -6,6 +6,18 @@ LanguageMessages = Mapping[str, str]
 
 MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
     LanguageEnum.RU: {
+        "account.telegram.notifyAssetMovement": "Взносы, возвраты и выплаты по активам",
+        "account.telegram.notifySavingsGoalReached": "Достижение цели накоплений",
+        "account.telegram.notifyAssetsMonthSummary": "Ежемесячная сводка по активам",
+        "account.telegram.notifyDepositMaturity": "Окончание срочного вклада",
+        "account.apiAccess.domain.workspace.assets": "Активы",
+        "account.apiAccess.example.assetsReport.title": (
+            "Какую долю дохода я отложил за выбранный период?"
+        ),
+        "account.apiAccess.example.assetsReport.summary": "Отчёт в рублях за март 2026 года",
+        "account.apiAccess.example.assetsReport.hint": (
+            "Обе даты включены. Для просмотра достаточно права чтения активов."
+        ),
         "account.title": "Личный кабинет",
         "account.navigation": "Разделы профиля",
         "account.sidePanel.open": "Открыть разделы профиля",
@@ -248,6 +260,18 @@ MESSAGES: Mapping[LanguageEnum, LanguageMessages] = {
         "account.apiAccess.dateTime.now": "Сейчас",
     },
     LanguageEnum.EN: {
+        "account.telegram.notifyAssetMovement": "Asset contributions, withdrawals and payouts",
+        "account.telegram.notifySavingsGoalReached": "Savings goal reached",
+        "account.telegram.notifyAssetsMonthSummary": "Monthly asset summary",
+        "account.telegram.notifyDepositMaturity": "Upcoming deposit maturity",
+        "account.apiAccess.domain.workspace.assets": "Assets",
+        "account.apiAccess.example.assetsReport.title": (
+            "What share of my income did I save during the selected period?"
+        ),
+        "account.apiAccess.example.assetsReport.summary": "March 2026 savings report in rubles",
+        "account.apiAccess.example.assetsReport.hint": (
+            "Both dates are inclusive. The asset read permission covers this report."
+        ),
         "account.title": "Account",
         "account.navigation": "Profile sections",
         "account.sidePanel.open": "Open profile sections",

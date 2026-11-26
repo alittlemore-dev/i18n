@@ -4,6 +4,7 @@ import ecs_logging
 import pytest
 import structlog
 from pydantic import ValidationError
+from sentry_sdk import Client
 
 from infra.config.initializers import init_sentry, monitor_event_loop_lag, scrub_request_data
 from infra.config.loggers import build_project_logging_config
@@ -39,7 +40,10 @@ def test_sentry_privacy(monkeypatch: pytest.MonkeyPatch, enabled: bool) -> None:
         initialize.assert_not_called()
         return
     options = initialize.call_args.kwargs
-    assert options["send_default_pii"] is False
+    with Client(
+        **{**options, "dsn": "", "default_integrations": False, "spotlight": False},
+    ) as client:
+        assert not client.should_send_default_pii()
     assert options["include_local_variables"] is False
     assert options["max_request_body_size"] == "never"
     for callback in ("before_send", "before_send_transaction"):

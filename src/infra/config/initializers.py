@@ -9,7 +9,7 @@ from infra.config.loggers import logger
 from infra.config.settings import settings
 
 if TYPE_CHECKING:
-    from sentry_sdk._types import Event, Hint
+    from sentry_sdk.types import Event, Hint, Log
 
 
 def scrub_request_data(event: Event, _hint: Hint) -> Event:
@@ -23,18 +23,23 @@ def scrub_request_data(event: Event, _hint: Hint) -> Event:
     return event
 
 
+def scrub_log_request_data(log: Log, _hint: Hint) -> Log:
+    log["attributes"].pop("user_agent.original", None)
+    return log
+
+
 def init_sentry() -> None:
     if not settings.sentry.use:
         return
     sentry_sdk.init(
         dsn=settings.sentry.dsn.get_secret_value(),
-        send_default_pii=False,
         include_local_variables=False,
         max_request_body_size="never",
         before_send=scrub_request_data,
         before_send_transaction=scrub_request_data,
         traces_sample_rate=1.0,
         enable_logs=True,
+        before_send_log=scrub_log_request_data,
         profile_lifecycle="trace",
         integrations=[LitestarIntegration()],
     )

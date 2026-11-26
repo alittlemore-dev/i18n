@@ -12,7 +12,7 @@ cleanup() {
 trap cleanup EXIT
 network="$(docker network create "i18n-smoke-$$")"
 cache_container="$(docker run -d --network "$network" --network-alias valkey \
-    --tmpfs /data valkey/valkey:9.0.1 valkey-server --save "" --appendonly no)"
+    --tmpfs /data valkey/valkey:9.1.4 valkey-server --save "" --appendonly no)"
 app_container="$(docker run -d --network "$network" \
     -e I18N_DEFAULT_LANGUAGE=ru -e APP_DEBUG=false -e APP_USE_CACHE=true \
     -e VALKEY_HOST=valkey -e VALKEY_PORT=6379 -e SENTRY_USE=false -e SENTRY_DSN= \
